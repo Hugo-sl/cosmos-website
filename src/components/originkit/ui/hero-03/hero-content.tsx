@@ -1,8 +1,6 @@
 // Delivered by Originkit · stack: nextjs · styling: tailwind
 "use client";
 
-"use client";
-
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/originkit/ui/hero-03/button";
 
@@ -32,25 +30,25 @@ export const HeroContent = ({ onExplore, onBook }: HeroContentProps) => {
         };
 
   return (
-    <div className="pointer-events-none relative z-20 flex w-full max-w-[378px] flex-col items-center gap-[34px] ipad:max-w-[490px] ipad:gap-[44px] desktop-sm:max-w-[502px] desktop-sm:gap-8">
+    <div className="pointer-events-none relative z-20 flex w-full max-w-[340px] sm:max-w-[420px] ipad:max-w-[490px] desktop-sm:max-w-[502px] flex-col items-center gap-6 sm:gap-[34px] ipad:gap-[44px] desktop-sm:gap-8">
       {/* Soft cream veil so tunnel lines don't fight the type */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 left-1/2 h-[300px] w-[360px] -translate-x-1/2 -translate-y-1/2 bg-[#F9F8F5] blur-[36px] ipad:h-[497px] ipad:w-[591px] ipad:blur-[56px] desktop-sm:h-[364px] desktop-sm:w-[433px] desktop-sm:blur-[41px]"
+        className="pointer-events-none absolute top-1/2 left-1/2 h-[240px] w-[280px] -translate-x-1/2 -translate-y-1/2 bg-[#F9F8F5] blur-[28px] sm:h-[300px] sm:w-[360px] sm:blur-[36px] ipad:h-[497px] ipad:w-[591px] ipad:blur-[56px] desktop-sm:h-[364px] desktop-sm:w-[433px] desktop-sm:blur-[41px]"
       />
 
-      <div className="relative flex w-full flex-col items-center gap-[34px] ipad:gap-[44px] desktop-sm:gap-8">
-        <div className="flex w-full flex-col items-center gap-[17px] ipad:gap-[22px] desktop-sm:gap-4">
+      <div className="relative flex w-full flex-col items-center gap-5 sm:gap-[34px] ipad:gap-[44px] desktop-sm:gap-8">
+        <div className="flex w-full flex-col items-center gap-3 sm:gap-[17px] ipad:gap-[22px] desktop-sm:gap-4">
           <motion.h1
             {...reveal(0.12)}
-            className="w-full max-w-[378px] text-center font-serif-display text-[56px] font-bold leading-[54px] tracking-[-1.38px] text-[#1d1d1d] text-balance ipad:max-w-[490px] ipad:text-[76px] ipad:leading-[75px] ipad:tracking-[-1.86px] desktop-sm:max-w-[502px] desktop-sm:text-[88px] desktop-sm:leading-[80px] desktop-sm:tracking-[-2.04px]"
+            className="w-full text-center font-serif-display text-[46px] sm:text-[56px] font-bold leading-[44px] sm:leading-[54px] tracking-[-1.2px] sm:tracking-[-1.38px] text-[#1d1d1d] text-balance ipad:max-w-[490px] ipad:text-[76px] ipad:leading-[75px] ipad:tracking-[-1.86px] desktop-sm:max-w-[502px] desktop-sm:text-[88px] desktop-sm:leading-[80px] desktop-sm:tracking-[-2.04px]"
           >
             COSMOS
           </motion.h1>
 
           <motion.p
             {...reveal(0.22)}
-            className="w-full max-w-[338px] text-center font-serif-display italic text-[16px] leading-normal tracking-[-0.28px] text-[#1d1d1d]/80 text-pretty ipad:max-w-[438px] ipad:text-[20px] ipad:tracking-[-0.36px] desktop-sm:max-w-[360px] desktop-sm:text-[20px] desktop-sm:leading-[28px] desktop-sm:tracking-[-0.34px]"
+            className="w-full max-w-[290px] sm:max-w-[338px] text-center font-serif-display italic text-[14px] sm:text-[16px] leading-snug tracking-[-0.28px] text-[#1d1d1d]/80 text-pretty ipad:max-w-[438px] ipad:text-[20px] ipad:tracking-[-0.36px] desktop-sm:max-w-[360px] desktop-sm:text-[20px] desktop-sm:leading-[28px] desktop-sm:tracking-[-0.34px]"
           >
             « L'Énergie du Street Art. La Rigueur de l'Action Painting. »
           </motion.p>
@@ -58,7 +56,7 @@ export const HeroContent = ({ onExplore, onBook }: HeroContentProps) => {
 
         <motion.div
           {...reveal(0.32)}
-          className="pointer-events-auto flex flex-nowrap items-center justify-center gap-[17px] ipad:gap-[22px] desktop-sm:gap-4"
+          className="pointer-events-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-[17px] ipad:gap-[22px] desktop-sm:gap-4 w-full sm:w-auto px-4 sm:px-0"
         >
           <Button variant="primary" aria-label="Explorer la Galerie" onClick={onExplore}>
             Explorer la Galerie

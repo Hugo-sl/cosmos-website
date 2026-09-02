@@ -20,17 +20,17 @@ import imgSierraNevada from '../assets/oeuvres/SIERRA NEVADA 80X80.webp';
   <Section12Hero client:load />
 
   <!-- 2. EXHIBITION DETAILS SECTION -->
-  <section id="exhibition-details" class="py-24 lg:py-32 bg-[#F9F8F5] border-b border-hairline text-[#141413]">
+  <section id="exhibition-details" class="py-16 sm:py-24 lg:py-32 bg-[#F9F8F5] border-b border-hairline text-[#141413]">
     <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-6 space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div class="lg:col-span-6 space-y-4 sm:space-y-6">
           <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">
             L'EXPÉRIENCE DU GESTE
           </span>
-          <h2 class="font-serif-display text-4xl sm:text-6xl text-[#141413] font-bold tracking-tight leading-[0.9]">
+          <h2 class="font-serif-display text-3xl sm:text-5xl lg:text-6xl text-[#141413] font-bold tracking-tight leading-[0.95]">
             La Fusion des Deux Mondes
           </h2>
-          <p class="text-sm text-[#666460] font-light leading-relaxed">
+          <p class="text-xs sm:text-sm text-[#666460] font-light leading-relaxed">
             L'artiste aborde chaque toile comme un sanctuaire d'énergie. Des strates de bombes aérosol aux coulures à l'huile, l'œuvre capture l'urgence de la rue et la pérennité du musée.
           </p>
           <div class="pt-2">
@@ -39,15 +39,15 @@ import imgSierraNevada from '../assets/oeuvres/SIERRA NEVADA 80X80.webp';
               class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#141413] hover:text-[#8C7A5E] transition-colors border-b border-[#141413] pb-1 font-bold"
             >
               <span>Lire la biographie curatoriale</span>
-              <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+              <ArrowUpRight class="w-3.5 h-3.5" aria-hidden="true" />
             </a>
           </div>
         </div>
-        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+        <div class="lg:col-span-6 grid grid-cols-2 gap-3 sm:gap-4 mt-4 lg:mt-0">
           <div class="aspect-[3/4] bg-[#F2F0EB] border border-hairline overflow-hidden">
             <Image src={imgCubaLibre} alt="COSMOS — Cuba Libre" class="w-full h-full object-cover img-museum" width={600} height={800} />
           </div>
-          <div class="aspect-[3/4] bg-[#F2F0EB] border border-hairline overflow-hidden mt-8">
+          <div class="aspect-[3/4] bg-[#F2F0EB] border border-hairline overflow-hidden mt-4 sm:mt-8">
             <Image src={imgSierraNevada} alt="COSMOS — Sierra Nevada" class="w-full h-full object-cover img-museum" width={600} height={800} />
           </div>
         </div>
@@ -56,24 +56,24 @@ import imgSierraNevada from '../assets/oeuvres/SIERRA NEVADA 80X80.webp';
   </section>
 
   <!-- 3. ATELIER & CONTACT CTA -->
-  <section class="py-24 bg-[#141413] text-[#F9F8F5]">
-    <div class="max-w-[1200px] mx-auto px-6 text-center space-y-8">
+  <section class="py-16 sm:py-24 bg-[#141413] text-[#F9F8F5]">
+    <div class="max-w-[1200px] mx-auto px-6 text-center space-y-6 sm:space-y-8">
       <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">
         RÉSERVATIONS & GALERIES
       </span>
-      <h2 class="font-serif-display text-4xl sm:text-6xl font-bold tracking-tight">
+      <h2 class="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
         Visite Privée de l'Atelier
       </h2>
       <p class="text-xs sm:text-sm text-[#9C9991] font-light max-w-xl mx-auto leading-relaxed">
         Découvrez les nouvelles créations en avant-première et étudiez la réalisation d'œuvres sur-mesure avec l'artiste.
       </p>
-      <div class="pt-4">
+      <div class="pt-2 sm:pt-4">
         <a
           href="/contact"
-          class="inline-flex items-center gap-3 px-8 py-4 bg-[#F9F8F5] text-[#141413] text-xs font-mono uppercase tracking-[0.2em] font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-colors"
+          class="inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#F9F8F5] text-[#141413] text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-colors"
         >
           <span>Prendre rendez-vous au studio</span>
-          <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+          <ArrowUpRight class="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
         </a>
       </div>
     </div>

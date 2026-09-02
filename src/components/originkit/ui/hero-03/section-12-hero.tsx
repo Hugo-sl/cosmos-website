@@ -1,12 +1,9 @@
 // Delivered by Originkit · stack: nextjs · styling: tailwind
 "use client";
 
-"use client";
-
 import { useState } from "react";
 import { GalleryOverlay } from "@/components/originkit/ui/hero-03/gallery-overlay";
 import { HeroContent } from "@/components/originkit/ui/hero-03/hero-content";
-import { Navbar } from "@/components/originkit/ui/hero-03/navbar";
 import { PerspectiveBackground } from "@/components/originkit/ui/hero-03/perspective-background";
 
 export const Section12Hero = () => {
@@ -21,7 +18,7 @@ export const Section12Hero = () => {
   };
 
   const handleBook = () => {
-    window.location.hash = "#book";
+    window.location.href = "/contact";
   };
 
   return (
@@ -29,10 +26,10 @@ export const Section12Hero = () => {
       aria-label="Portrait perspective gallery"
       className="relative isolate w-full overflow-hidden bg-[#F9F8F5]"
     >
-      <div className="relative mx-auto flex h-screen w-full max-w-[1600px] flex-col wide-lg:max-w-none">
+      <div className="relative mx-auto flex h-[100dvh] min-h-[560px] w-full max-w-[1600px] flex-col wide-lg:max-w-none">
         <PerspectiveBackground />
 
-        <div className="pointer-events-none relative z-20 flex flex-1 flex-col items-center justify-center px-4 pb-12 pt-6 ipad:px-12 desktop-sm:px-6 desktop-sm:pb-20 desktop-sm:pt-6">
+        <div className="pointer-events-none relative z-20 flex flex-1 flex-col items-center justify-center px-4 pb-8 pt-20 sm:pb-12 sm:pt-24 ipad:px-12 desktop-sm:px-6 desktop-sm:pb-20 desktop-sm:pt-6">
           <HeroContent onExplore={handleExplore} onBook={handleBook} />
         </div>
       </div>

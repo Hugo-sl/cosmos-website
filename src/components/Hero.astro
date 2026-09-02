@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import { ArrowUpRight } from '@lucide/astro';
 import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
 ---
 
@@ -21,9 +20,8 @@ import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
 
       <div class="lg:col-span-4 lg:text-right">
         <div class="flex items-center lg:justify-end gap-4 sm:gap-6 pt-1 sm:pt-2 text-[11px] sm:text-xs font-mono uppercase tracking-[0.18em]">
-          <a href="/galerie" class="text-[#141413] font-bold hover:text-[#8C7A5E] transition-colors border-b border-[#141413] pb-0.5 flex items-center gap-1.5">
+          <a href="/galerie" class="text-[#141413] font-bold hover:text-[#8C7A5E] transition-colors border-b border-[#141413] pb-0.5">
             <span>Le Catalogue</span>
-            <ArrowUpRight class="w-3.5 h-3.5" aria-hidden="true" />
           </a>
           <a href="/a-propos" class="text-[#666460] hover:text-[#141413] transition-colors">
             <span>Démarche</span>
@@ -56,17 +54,6 @@ import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
             Technique mixte & spray sur lin · 120 × 100 cm
           </span>
         </div>
-
-        <!-- Direct Zoom Badge -->
-        <a
-          href="/galerie"
-          class="absolute top-3 right-3 sm:top-6 sm:right-6 bg-[#141413]/90 hover:bg-[#141413] text-[#F9F8F5] px-2.5 py-1.5 sm:p-3 backdrop-blur-md transition-all duration-300 flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.18em]"
-          aria-label="Inspecter la collection complète"
-        >
-          <span class="hidden xs:inline sm:inline">Exposition HD</span>
-          <span class="xs:hidden sm:hidden">HD</span>
-          <ArrowUpRight class="w-3.5 h-3.5 text-[#F9F8F5]" aria-hidden="true" />
-        </a>
       </div>
     </div>
 

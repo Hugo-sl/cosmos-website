@@ -4,23 +4,23 @@ import { MapPin, ArrowUpRight } from '@lucide/astro';
 import imgAssilah from '../assets/oeuvres/SIERRA NEVADA 80X80.webp';
 ---
 
-<section aria-label="Visite de l'Atelier" class="py-24 bg-[#141413] text-[#F9F8F5] relative overflow-hidden">
-  <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+<section aria-label="Visite de l'Atelier" class="py-14 sm:py-24 bg-[#141413] text-[#F9F8F5] relative overflow-hidden">
+  <div class="max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16">
     
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       
       <!-- Text Information Column -->
-      <div class="lg:col-span-7 space-y-8">
-        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] block font-bold">
+      <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+        <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] block font-bold">
           VISITER L'ATELIER
         </span>
 
-        <h2 class="font-serif-display text-4xl sm:text-6xl text-[#F9F8F5] font-bold tracking-tight leading-[0.9]">
+        <h2 class="font-serif-display text-3xl sm:text-5xl lg:text-6xl text-[#F9F8F5] font-bold tracking-tight leading-[0.95]">
           Entrez dans l'univers de COSMOS
         </h2>
 
-        <div class="space-y-4 text-sm sm:text-base text-[#9C9991] font-light leading-relaxed max-w-2xl">
-          <p class="text-[#F9F8F5] font-normal italic">
+        <div class="space-y-3 sm:space-y-4 text-xs sm:text-base text-[#9C9991] font-light leading-relaxed max-w-2xl">
+          <p class="text-[#F9F8F5] font-normal italic text-sm sm:text-base">
             Là où la couleur prend forme, où les gestes se superposent et où chaque toile devient un territoire à explorer.
           </p>
           <p>
@@ -28,31 +28,31 @@ import imgAssilah from '../assets/oeuvres/SIERRA NEVADA 80X80.webp';
           </p>
         </div>
 
-        <div class="border-t border-hairline-dark pt-6">
-          <div class="space-y-1.5">
-            <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-[#8C7A5E] font-bold">
-              <MapPin class="w-4 h-4" aria-hidden="true" />
+        <div class="border-t border-hairline-dark pt-4 sm:pt-6">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2 text-[11px] sm:text-xs font-mono uppercase tracking-[0.18em] text-[#8C7A5E] font-bold">
+              <MapPin class="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
               <span>LOCALISATION</span>
             </div>
-            <p class="text-xs text-[#9C9991] font-light">
+            <p class="text-[11px] sm:text-xs text-[#9C9991] font-light">
               Le Kremlin-Bicêtre (Grand Paris) — Visites sur rendez-vous.
             </p>
           </div>
         </div>
 
-        <div class="pt-4">
+        <div class="pt-2 sm:pt-4">
           <a
             href="/contact"
-            class="inline-flex items-center gap-3 px-8 py-4 bg-[#F9F8F5] text-[#141413] text-xs font-mono uppercase tracking-[0.2em] font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-all duration-300"
+            class="inline-flex items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#F9F8F5] text-[#141413] text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-all duration-300"
           >
             <span>Découvrir l'Atelier</span>
-            <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+            <ArrowUpRight class="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
           </a>
         </div>
       </div>
 
       <!-- Image Column -->
-      <div class="lg:col-span-5">
+      <div class="lg:col-span-5 mt-2 lg:mt-0">
         <div class="aspect-square bg-[#121211] border border-hairline-dark overflow-hidden relative">
           <Image
             src={imgAssilah}
@@ -61,7 +61,7 @@ import imgAssilah from '../assets/oeuvres/SIERRA NEVADA 80X80.webp';
             width={700}
             height={700}
           />
-          <div class="absolute bottom-4 left-4 right-4 bg-[#141413]/90 backdrop-blur-md p-4 border border-hairline-dark text-[10px] font-mono text-[#9C9991]">
+          <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 bg-[#141413]/90 backdrop-blur-md p-3 sm:p-4 border border-hairline-dark text-[9px] sm:text-[10px] font-mono text-[#9C9991]">
             <span class="text-[#8C7A5E] uppercase block font-bold tracking-[0.18em]">ATELIER — LE KREMLIN-BICÊTRE</span>
             <span>Espace de création & accompagnement sur-mesure pour galeries & projets d'exception</span>
           </div>

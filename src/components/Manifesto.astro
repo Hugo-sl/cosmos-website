@@ -14,15 +14,15 @@ const {
 const words = quote.split(' ');
 ---
 
-<section aria-label="Critique institutionnelle" class="py-24 sm:py-32 bg-[#F3F1EC] border-y border-hairline relative select-none">
-  <div class="max-w-[1200px] mx-auto px-6 sm:px-10 text-center">
+<section aria-label="Critique institutionnelle" class="py-14 sm:py-24 lg:py-32 bg-[#F3F1EC] border-y border-hairline relative select-none">
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-10 text-center">
     
-    <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] block mb-8 font-bold">
+    <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] block mb-5 sm:mb-8 font-bold">
       REGARD CRITIQUE
     </span>
 
-    <blockquote class="space-y-8">
-      <p id="manifesto-quote" class="font-serif-display italic text-2xl sm:text-4xl lg:text-5xl leading-[1.35] font-normal tracking-tight max-w-4xl mx-auto flex flex-wrap justify-center gap-x-[0.25em] gap-y-[0.1em]">
+    <blockquote class="space-y-6 sm:space-y-8">
+      <p id="manifesto-quote" class="font-serif-display italic text-lg sm:text-3xl lg:text-5xl leading-[1.4] sm:leading-[1.35] font-normal tracking-tight max-w-4xl mx-auto flex flex-wrap justify-center gap-x-[0.25em] gap-y-[0.1em]">
         <span class="manifesto-word transition-all duration-300 opacity-25 text-[#9C9991]">«</span>
         {words.map((word) => (
           <span class="manifesto-word transition-all duration-300 opacity-25 text-[#9C9991] inline-block">{word}</span>
@@ -30,12 +30,12 @@ const words = quote.split(' ');
         <span class="manifesto-word transition-all duration-300 opacity-25 text-[#9C9991]">»</span>
       </p>
       
-      <footer class="pt-6 border-t border-[#141413]/10 inline-block">
-        <cite class="not-italic flex flex-col items-center gap-1">
-          <span class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-[#141413]">
+      <footer class="pt-4 sm:pt-6 border-t border-[#141413]/10 inline-block">
+        <cite class="not-italic flex flex-col items-center gap-0.5 sm:gap-1">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.2em] font-mono font-bold text-[#141413]">
             {author}
           </span>
-          <span class="text-[10px] font-mono tracking-[0.18em] text-[#666460]">
+          <span class="text-[9px] sm:text-[10px] font-mono tracking-[0.18em] text-[#666460]">
             {role}
           </span>
         </cite>
@@ -55,8 +55,6 @@ const words = quote.split(' ');
       const rect = quoteElement.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Calculate scroll progress directly based on the quote text's position
-      // Starts when quote reaches 75% of viewport height, finishes when it reaches 35%
       const start = windowHeight * 0.75;
       const end = windowHeight * 0.35;
       const totalRange = start - end;

@@ -1,28 +1,27 @@
 ---
 import { Image } from 'astro:assets';
-import { ArrowDown, ArrowUpRight } from '@lucide/astro';
+import { ArrowUpRight } from '@lucide/astro';
 import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
 ---
 
-<section aria-label="Présentation de l'exposition COSMOS" class="relative pt-6 pb-12 lg:pt-8 lg:pb-16 bg-[#F9F8F5]">
+<section aria-label="Présentation de l'exposition COSMOS" class="relative pt-4 pb-10 sm:pt-6 sm:pb-14 lg:pt-8 lg:pb-16 bg-[#F9F8F5]">
   
-  <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
-    
+  <div class="max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16">
 
     <!-- Main Title Header -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-end mb-8 sm:mb-12">
       <div class="lg:col-span-8">
-        <h1 class="font-serif-display text-6xl sm:text-8xl lg:text-9xl font-bold tracking-tight text-[#141413] leading-[0.85]">
+        <h1 class="font-serif-display text-5xl sm:text-7xl lg:text-9xl font-bold tracking-tight text-[#141413] leading-[0.9]">
           COSMOS
         </h1>
-        <p class="font-serif-display italic text-xl sm:text-3xl text-[#666460] mt-4 font-normal">
+        <p class="font-serif-display italic text-base sm:text-2xl lg:text-3xl text-[#666460] mt-2 sm:mt-4 font-normal max-w-2xl">
           L’Énergie du Street Art. La Rigueur de l’Action Painting.
         </p>
       </div>
 
-      <div class="lg:col-span-4 lg:text-right space-y-4">
-        <div class="flex items-center lg:justify-end gap-6 pt-2 text-xs font-mono uppercase tracking-[0.18em]">
-          <a href="/galerie" class="text-[#141413] font-semibold hover:text-[#8C7A5E] transition-colors border-b border-[#141413] pb-0.5 flex items-center gap-1">
+      <div class="lg:col-span-4 lg:text-right">
+        <div class="flex items-center lg:justify-end gap-4 sm:gap-6 pt-1 sm:pt-2 text-[11px] sm:text-xs font-mono uppercase tracking-[0.18em]">
+          <a href="/galerie" class="text-[#141413] font-bold hover:text-[#8C7A5E] transition-colors border-b border-[#141413] pb-0.5 flex items-center gap-1.5">
             <span>Le Catalogue</span>
             <ArrowUpRight class="w-3.5 h-3.5" aria-hidden="true" />
           </a>
@@ -35,7 +34,7 @@ import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
 
     <!-- Monumental Artwork Frame (Museum Exhibition Wall) -->
     <div class="relative group">
-      <div class="aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-[#F2F0EB] border border-hairline relative">
+      <div class="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] overflow-hidden bg-[#F2F0EB] border border-hairline relative">
         <Image
           src={imgTheWall}
           alt="COSMOS — The Wall (2024), technique mixte et spray sur lin"
@@ -46,14 +45,14 @@ import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
         />
         
         <!-- Cartel Overlay (Bottom Left Museum Tag) -->
-        <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-[#F9F8F5]/95 backdrop-blur-md px-4 py-3 border border-hairline shadow-sm max-w-sm">
-          <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#8C7A5E] block font-semibold">
+        <div class="absolute bottom-3 left-3 right-3 sm:right-auto sm:bottom-6 sm:left-6 bg-[#F9F8F5]/95 backdrop-blur-md px-3.5 py-2.5 sm:px-4 sm:py-3 border border-hairline shadow-sm sm:max-w-sm">
+          <span class="text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.2em] text-[#8C7A5E] block font-bold">
             ŒUVRE PHARE — FIG. 01
           </span>
-          <span class="font-serif-display text-lg text-[#141413] font-bold block">
+          <span class="font-serif-display text-base sm:text-lg text-[#141413] font-bold block">
             The Wall (2024)
           </span>
-          <span class="text-[10px] font-mono text-[#666460] block">
+          <span class="text-[9px] sm:text-[10px] font-mono text-[#666460] block truncate">
             Technique mixte & spray sur lin · 120 × 100 cm
           </span>
         </div>
@@ -61,10 +60,11 @@ import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
         <!-- Direct Zoom Badge -->
         <a
           href="/galerie"
-          class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-[#141413]/90 hover:bg-[#141413] text-[#F9F8F5] p-3 backdrop-blur-md transition-all duration-300 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.18em]"
+          class="absolute top-3 right-3 sm:top-6 sm:right-6 bg-[#141413]/90 hover:bg-[#141413] text-[#F9F8F5] px-2.5 py-1.5 sm:p-3 backdrop-blur-md transition-all duration-300 flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.18em]"
           aria-label="Inspecter la collection complète"
         >
-          <span>Exposition Haute Définition</span>
+          <span class="hidden xs:inline sm:inline">Exposition HD</span>
+          <span class="xs:hidden sm:hidden">HD</span>
           <ArrowUpRight class="w-3.5 h-3.5 text-[#F9F8F5]" aria-hidden="true" />
         </a>
       </div>

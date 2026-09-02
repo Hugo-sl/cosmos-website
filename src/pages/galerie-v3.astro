@@ -11,61 +11,61 @@ import { ArrowUpRight, ArrowDown } from '@lucide/astro';
   currentPath="/galerie-v3"
 >
   <!-- Fullscreen Soft Snap Viewport Container -->
-  <div id="v3-scroll-container" class="h-[calc(100vh-80px)] overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#F9F8F5]">
+  <div id="v3-scroll-container" class="h-[calc(100dvh-80px)] overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#F9F8F5]">
     
     {artworksData.map((art, idx) => (
       <section
-        class="v3-section h-[calc(100vh-80px)] w-full snap-start snap-always flex flex-col lg:flex-row items-center justify-between p-6 sm:p-12 lg:px-16 pt-28 pb-12 border-b border-hairline relative bg-[#F9F8F5] overflow-hidden"
+        class="v3-section min-h-[calc(100dvh-80px)] lg:h-[calc(100dvh-80px)] w-full snap-start snap-always flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 py-6 sm:p-10 lg:px-16 gap-6 lg:gap-12 border-b border-hairline relative bg-[#F9F8F5] overflow-hidden"
         id={`v3-art-${idx}`}
         data-section-index={idx}
       >
         <!-- Background Index Watermark Number -->
-        <div class="v3-watermark absolute bottom-6 right-8 font-serif-display text-[22vw] leading-none text-[#141413]/5 pointer-events-none select-none transition-opacity duration-700" aria-hidden="true">
+        <div class="v3-watermark absolute bottom-4 right-6 sm:bottom-6 sm:right-8 font-serif-display text-[18vw] sm:text-[22vw] leading-none text-[#141413]/5 pointer-events-none select-none transition-opacity duration-700" aria-hidden="true">
           {art.fig}
         </div>
 
         <!-- Left Curatorial Info Panel -->
-        <div class="v3-cartel lg:w-5/12 space-y-6 z-10 max-w-lg transition-opacity duration-700">
-          <div class="flex items-center justify-between border-b border-hairline pb-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold">
+        <div class="v3-cartel lg:w-5/12 w-full space-y-3 sm:space-y-5 z-10 max-w-lg transition-opacity duration-700 order-2 lg:order-1">
+          <div class="flex items-center justify-between border-b border-hairline pb-2 sm:pb-3">
+            <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] font-bold">
               ACCROCHAGE N° {art.fig} / {artworksData.length.toString().padStart(2, '0')}
             </span>
-            <span class="text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1 bg-[#141413] text-[#F9F8F5]">
+            <span class="text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.18em] px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#141413] text-[#F9F8F5]">
               {art.status}
             </span>
           </div>
 
           <div>
-            <h2 class="font-serif-display text-4xl sm:text-6xl font-bold tracking-tight text-[#141413]">
+            <h2 class="font-serif-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#141413]">
               {art.title}
             </h2>
-            <p class="text-xs font-mono text-[#666460] mt-1">
+            <p class="text-[11px] sm:text-xs font-mono text-[#666460] mt-0.5 sm:mt-1">
               ÉDITION {art.year} · MONOGRAPHIE
             </p>
           </div>
 
-          <div class="bg-[#F3F1EC] p-4 border border-hairline space-y-1.5 text-xs font-sans">
-            <p><strong class="font-mono text-[10px] text-[#8C7A5E] uppercase block">TECHNIQUE & MEDIUM</strong> {art.medium}</p>
-            <p><strong class="font-mono text-[10px] text-[#8C7A5E] uppercase block">FORMAT SUR CHÂSSIS</strong> {art.dimensions}</p>
+          <div class="bg-[#F3F1EC] p-2.5 sm:p-4 border border-hairline space-y-1 sm:space-y-1.5 text-[11px] sm:text-xs font-sans">
+            <p><strong class="font-mono text-[9px] sm:text-[10px] text-[#8C7A5E] uppercase block">TECHNIQUE & MEDIUM</strong> {art.medium}</p>
+            <p><strong class="font-mono text-[9px] sm:text-[10px] text-[#8C7A5E] uppercase block">FORMAT SUR CHÂSSIS</strong> {art.dimensions}</p>
           </div>
 
-          <p class="text-xs text-[#666460] leading-relaxed font-light">
+          <p class="text-[11px] sm:text-xs text-[#666460] leading-relaxed font-light line-clamp-3 sm:line-clamp-none">
             {art.description}
           </p>
 
-          <div class="pt-2 flex items-center gap-4">
+          <div class="pt-1 sm:pt-2 flex items-center gap-3 sm:gap-4">
             <a
               href={`/contact?oeuvre=${encodeURIComponent(art.title)}`}
-              class="inline-flex items-center gap-2 px-6 py-3.5 bg-[#141413] text-[#F9F8F5] text-xs font-mono uppercase tracking-[0.18em] font-semibold hover:bg-[#8C7A5E] transition-colors"
+              class="inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-[#141413] text-[#F9F8F5] text-[11px] sm:text-xs font-mono uppercase tracking-[0.18em] font-semibold hover:bg-[#8C7A5E] transition-colors"
             >
               <span>Se renseigner</span>
-              <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+              <ArrowUpRight class="w-3.5 h-3.5" aria-hidden="true" />
             </a>
 
             {idx < artworksData.length - 1 && (
               <button
                 type="button"
-                class="v3-next-btn inline-flex items-center gap-1 text-xs font-mono uppercase tracking-[0.18em] text-[#666460] hover:text-[#141413] transition-colors py-3 cursor-pointer"
+                class="v3-next-btn inline-flex items-center gap-1 text-[11px] sm:text-xs font-mono uppercase tracking-[0.18em] text-[#666460] hover:text-[#141413] transition-colors py-2 cursor-pointer"
                 data-target-index={idx + 1}
               >
                 <span>Œuvre suivante</span>
@@ -75,13 +75,13 @@ import { ArrowUpRight, ArrowDown } from '@lucide/astro';
           </div>
         </div>
 
-        <!-- Right Grand Artwork Wall Display (Grand Scale: max-h-[66vh]) -->
-        <div class="v3-artwork lg:w-7/12 w-full flex items-center justify-center p-2 sm:p-6 z-10 my-auto transition-opacity duration-700">
-          <div class="relative bg-[#F2F0EB] p-4 sm:p-6 border border-hairline shadow-[0_30px_70px_-15px_rgba(20,20,19,0.2)]">
+        <!-- Right Grand Artwork Wall Display (Grand Scale) -->
+        <div class="v3-artwork lg:w-7/12 w-full flex items-center justify-center p-0 sm:p-4 lg:p-6 z-10 transition-opacity duration-700 order-1 lg:order-2">
+          <div class="relative bg-[#F2F0EB] p-2 sm:p-4 lg:p-6 border border-hairline shadow-[0_20px_50px_-15px_rgba(20,20,19,0.18)] max-w-full">
             <Image
               src={art.image}
               alt={`COSMOS — ${art.title}`}
-              class="max-h-[62vh] sm:max-h-[66vh] w-auto object-contain img-museum"
+              class="max-h-[36vh] sm:max-h-[48vh] lg:max-h-[66vh] w-auto max-w-full object-contain img-museum"
               width={1600}
               height={1100}
               loading={idx === 0 ? "eager" : "lazy"}
@@ -93,17 +93,19 @@ import { ArrowUpRight, ArrowDown } from '@lucide/astro';
     ))}
 
     <!-- Footer Snap Section -->
-    <div class="snap-start snap-always min-h-[50vh] bg-[#141413] text-[#F9F8F5] p-12 flex items-center justify-center">
-      <div class="text-center space-y-4 max-w-xl">
-        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">FIN DE L'EXPOSITION</span>
-        <h3 class="font-serif-display text-3xl font-bold">COSMOS — Monographie</h3>
-        <p class="text-xs text-[#9C9991] font-light">
+    <div class="snap-start snap-always min-h-[40vh] bg-[#141413] text-[#F9F8F5] p-8 sm:p-12 flex items-center justify-center">
+      <div class="text-center space-y-3 sm:space-y-4 max-w-xl">
+        <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">FIN DE L'EXPOSITION</span>
+        <h3 class="font-serif-display text-2xl sm:text-3xl font-bold">COSMOS — Monographie</h3>
+        <p class="text-[11px] sm:text-xs text-[#9C9991] font-light">
           Pour en savoir plus sur les acquisitions ou organiser une visite privée d'atelier.
         </p>
-        <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-[#F9F8F5] text-[#141413] font-mono text-xs uppercase tracking-widest font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-colors">
-          <span>Contacter le Studio</span>
-          <ArrowUpRight class="w-4 h-4" />
-        </a>
+        <div class="pt-2">
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-[#F9F8F5] text-[#141413] font-mono text-xs uppercase tracking-widest font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-colors">
+            <span>Contacter le Studio</span>
+            <ArrowUpRight class="w-4 h-4" />
+          </a>
+        </div>
       </div>
     </div>
 

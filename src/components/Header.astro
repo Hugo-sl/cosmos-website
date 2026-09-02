@@ -208,8 +208,30 @@ const getGalerieLabel = (): string => {
   }`}>
     <nav aria-label="Navigation mobile" class="flex flex-col gap-4">
       
-      <a href="/" class={`text-sm uppercase tracking-[0.2em] font-sans py-2 border-b border-hairline ${isDarkHeader && !isAccueilV2 && !isAccueilV3 ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>Accueil</a>
-      <a href="/galerie" class={`text-sm uppercase tracking-[0.2em] font-sans py-2 border-b border-hairline ${isGalerieActive ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>Galerie</a>
+      <div class="py-2 border-b border-hairline space-y-2">
+        <span class="text-xs uppercase font-mono tracking-widest text-[#C4B59D] font-bold block">PAGES D'ACCUEIL</span>
+        <div class="flex items-center gap-4 pl-2 py-1">
+          <a href="/" class={`text-sm font-mono ${isDarkHeader && !isAccueilV2 && !isAccueilV3 ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>V1</a>
+          <span class="text-[#9C9991]">·</span>
+          <a href="/accueil-v2" class={`text-sm font-mono ${isAccueilV2 ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>V2</a>
+          <span class="text-[#9C9991]">·</span>
+          <a href="/accueil-v3" class={`text-sm font-mono ${isAccueilV3 ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>V3</a>
+        </div>
+      </div>
+
+      <div class="py-2 border-b border-hairline space-y-2">
+        <span class="text-xs uppercase font-mono tracking-widest text-[#C4B59D] font-bold block">EXPÉRIENCES DE GALERIE</span>
+        <div class="flex items-center gap-4 pl-2 py-1">
+          <a href="/galerie" class={`text-sm font-mono ${currentPath === '/galerie' ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>V1</a>
+          <span class="text-[#9C9991]">·</span>
+          <a href="/galerie-v2" class={`text-sm font-mono ${currentPath === '/galerie-v2' ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>V2</a>
+          <span class="text-[#9C9991]">·</span>
+          <a href="/galerie-v3" class={`text-sm font-mono ${currentPath === '/galerie-v3' ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>V3</a>
+          <span class="text-[#9C9991]">·</span>
+          <a href="/galerie-v4" class={`text-sm font-mono ${currentPath === '/galerie-v4' ? 'text-[#C4B59D] font-bold' : isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>V4</a>
+        </div>
+      </div>
+
       <a href="/a-propos" class={`text-sm uppercase tracking-[0.2em] font-sans py-2 border-b border-hairline ${isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>Démarche & Bio</a>
       <a href="/contact" class={`text-sm uppercase tracking-[0.2em] font-sans py-2 border-b border-hairline ${isDarkHeader ? 'text-[#F9F8F5]' : 'text-[#141413]'}`}>Atelier & Contact</a>
 

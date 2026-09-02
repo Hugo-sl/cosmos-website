@@ -10,28 +10,8 @@ import { ArrowUpRight, ArrowDown } from '@lucide/astro';
   description="Exposition cinématique en défilement vertical grand format (Full-Screen In Situ) des œuvres de COSMOS."
   currentPath="/galerie-v3"
 >
-  <!-- Top Bar with Version Switcher -->
-  <header class="bg-[#F3F1EC]/90 backdrop-blur-md border-b border-hairline py-3 px-6 sm:px-10 fixed top-20 left-0 right-0 z-40">
-    <div class="max-w-[1600px] mx-auto flex flex-wrap justify-between items-center gap-4 text-xs font-mono">
-      
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 bg-[#8C7A5E] rounded-full"></span>
-        <span class="font-bold text-[#141413]">GALERIE V3</span>
-      </div>
-
-      <!-- Quick Version Switcher Bar -->
-      <nav aria-label="Versions de galerie" class="hidden sm:flex items-center gap-2 text-[10px] uppercase tracking-wider font-bold">
-        <a href="/galerie" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V1</a>
-        <a href="/galerie-v2" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V2</a>
-        <span class="px-3 py-1.5 bg-[#141413] text-[#F9F8F5]">V3</span>
-        <a href="/galerie-v4" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V4</a>
-      </nav>
-
-    </div>
-  </header>
-
   <!-- Fullscreen Soft Snap Viewport Container -->
-  <div id="v3-scroll-container" class="h-[calc(100vh-80px)] overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#F9F8F5] pt-12">
+  <div id="v3-scroll-container" class="h-[calc(100vh-80px)] overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#F9F8F5]">
     
     {artworksData.map((art, idx) => (
       <section

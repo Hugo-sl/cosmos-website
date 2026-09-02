@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowDown, ArrowUpRight } from '@lucide/astro';
+import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
+---
+
+<section aria-label="Présentation de l'exposition COSMOS" class="relative pt-6 pb-12 lg:pt-8 lg:pb-16 bg-[#F9F8F5]">
+  
+  <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+    
+
+    <!-- Main Title Header -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+      <div class="lg:col-span-8">
+        <h1 class="font-serif-display text-6xl sm:text-8xl lg:text-9xl font-bold tracking-tight text-[#141413] leading-[0.85]">
+          COSMOS
+        </h1>
+        <p class="font-serif-display italic text-xl sm:text-3xl text-[#666460] mt-4 font-normal">
+          L’Énergie du Street Art. La Rigueur de l’Action Painting.
+        </p>
+      </div>
+
+      <div class="lg:col-span-4 lg:text-right space-y-4">
+        <div class="flex items-center lg:justify-end gap-6 pt-2 text-xs font-mono uppercase tracking-[0.18em]">
+          <a href="/galerie" class="text-[#141413] font-semibold hover:text-[#8C7A5E] transition-colors border-b border-[#141413] pb-0.5 flex items-center gap-1">
+            <span>Le Catalogue</span>
+            <ArrowUpRight class="w-3.5 h-3.5" aria-hidden="true" />
+          </a>
+          <a href="/a-propos" class="text-[#666460] hover:text-[#141413] transition-colors">
+            <span>Démarche</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monumental Artwork Frame (Museum Exhibition Wall) -->
+    <div class="relative group">
+      <div class="aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-[#F2F0EB] border border-hairline relative">
+        <Image
+          src={imgTheWall}
+          alt="COSMOS — The Wall (2024), technique mixte et spray sur lin"
+          class="w-full h-full object-cover img-museum"
+          width={1800}
+          height={900}
+          loading="eager"
+        />
+        
+        <!-- Cartel Overlay (Bottom Left Museum Tag) -->
+        <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-[#F9F8F5]/95 backdrop-blur-md px-4 py-3 border border-hairline shadow-sm max-w-sm">
+          <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#8C7A5E] block font-semibold">
+            ŒUVRE PHARE — FIG. 01
+          </span>
+          <span class="font-serif-display text-lg text-[#141413] font-bold block">
+            The Wall (2024)
+          </span>
+          <span class="text-[10px] font-mono text-[#666460] block">
+            Technique mixte & spray sur lin · 120 × 100 cm
+          </span>
+        </div>
+
+        <!-- Direct Zoom Badge -->
+        <a
+          href="/galerie"
+          class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-[#141413]/90 hover:bg-[#141413] text-[#F9F8F5] p-3 backdrop-blur-md transition-all duration-300 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.18em]"
+          aria-label="Inspecter la collection complète"
+        >
+          <span>Exposition Haute Définition</span>
+          <ArrowUpRight class="w-3.5 h-3.5 text-[#F9F8F5]" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</section>

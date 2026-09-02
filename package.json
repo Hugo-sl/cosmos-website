@@ -1,0 +1,34 @@
+{
+  "name": "cosmos",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@lucide/astro": "^1.29.0",
+    "@sanity/client": "^6.28.3",
+    "@sanity/image-url": "^1.1.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "astro": "^5.4.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^13.1.0",
+    "lucide-astro": "^0.556.0",
+    "lucide-react": "^1.31.0",
+    "motion": "^13.1.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.185.1"
+  }
+}

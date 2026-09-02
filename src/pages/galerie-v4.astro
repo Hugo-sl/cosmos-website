@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { artworksData } from '../data/artworks';
+import { ArrowUpRight, ChevronLeft, ChevronRight } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Galerie V4 — Atmosphère Immersive & Backdrop Peinture"
+  description="Exposition d'art contemporain avec arrière-plan peinture en transparence et scénographie glassmorphism pour les œuvres de COSMOS."
+  currentPath="/galerie-v4"
+>
+  <!-- Top Bar with Version Switcher -->
+  <header class="bg-[#F3F1EC]/90 backdrop-blur-md border-b border-hairline py-4 px-6 sm:px-10 fixed top-20 left-0 right-0 z-40">
+    <div class="max-w-[1600px] mx-auto flex flex-wrap justify-between items-center gap-4 text-xs font-mono">
+      
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 bg-[#8C7A5E] rounded-full"></span>
+        <span class="font-bold text-[#141413]">GALERIE V4</span>
+        <span class="text-[#666460]">· BACKDROP PEINTURE EN TRANSPARENCE</span>
+      </div>
+
+      <!-- Quick Version Switcher Bar -->
+      <nav aria-label="Versions de galerie" class="flex items-center gap-2 text-[10px] uppercase tracking-wider">
+        <a href="/galerie" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V1 Grille</a>
+        <a href="/galerie-v2" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V2 Slider</a>
+        <a href="/galerie-v3" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V3 Vertical</a>
+        <span class="px-3 py-1.5 bg-[#141413] text-[#F9F8F5] font-bold">V4 Atmosphere</span>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Ambient Backdrop Exhibition Container -->
+  <section
+    id="v4-atmosphere-container"
+    class="relative min-h-[calc(100vh-140px)] bg-[#0E0D0C] text-[#F9F8F5] flex flex-col justify-between overflow-hidden pt-28 pb-6 px-6 sm:px-12 select-none"
+  >
+    
+    <!-- Dynamic Recognizable Artwork Backdrop Layer per Painting -->
+    {artworksData.map((art, idx) => (
+      <div
+        class={`v4-bg-layer absolute inset-0 transition-all duration-1000 ease-in-out pointer-events-none ${
+          idx === 0 ? 'opacity-65 scale-105 z-0' : 'opacity-0 scale-115 z-0'
+        }`}
+        data-bg-index={idx}
+      >
+        <Image
+          src={art.image}
+          alt=""
+          class="w-full h-full object-cover filter blur-2xl brightness-90 saturate-125"
+          width={1600}
+          height={1000}
+          aria-hidden="true"
+        />
+        <!-- Light Tint Overlay so background artwork is clearly visible -->
+        <div class="absolute inset-0 bg-[#0E0D0C]/45" />
+      </div>
+    ))}
+
+    <!-- Top Counter & Meta -->
+    <div class="max-w-[1600px] w-full mx-auto flex justify-between items-center z-20 pb-4 border-b border-white/20">
+      <div>
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#C4B59D] font-bold block mb-1">
+          SCÉNOGRAPHIE CONTEMPORAINE
+        </span>
+        <h1 class="font-serif-display text-2xl sm:text-3xl font-bold text-[#F9F8F5]">
+          L'Écrin Chromatique
+        </h1>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <span id="v4-counter" class="text-sm font-mono font-bold text-[#F9F8F5]">
+          01 <span class="text-[#9C9991] font-normal">/ {artworksData.length}</span>
+        </span>
+        
+        <!-- Navigation Controls -->
+        <div class="flex items-center gap-2">
+          <button id="v4-prev" type="button" aria-label="Œuvre précédente" class="p-3 bg-[#141413]/80 backdrop-blur-md text-[#F9F8F5] border border-white/20 hover:bg-[#F9F8F5] hover:text-[#141413] transition-colors cursor-pointer">
+            <ChevronLeft class="w-5 h-5" aria-hidden="true" />
+          </button>
+          <button id="v4-next" type="button" aria-label="Œuvre suivante" class="p-3 bg-[#141413]/80 backdrop-blur-md text-[#F9F8F5] border border-white/20 hover:bg-[#F9F8F5] hover:text-[#141413] transition-colors cursor-pointer">
+            <ChevronRight class="w-5 h-5" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Main Stage: Foreground Artwork & Glassmorphism Cartel -->
+    <div class="relative w-full my-auto flex items-center justify-center z-20 py-6">
+      
+      {artworksData.map((art, idx) => (
+        <div
+          class={`v4-slide transition-all duration-700 ease-out flex flex-col lg:flex-row items-center justify-center gap-10 max-w-[1500px] w-full ${
+            idx === 0 ? 'opacity-100 scale-100 pointer-events-auto relative z-10' : 'opacity-0 scale-95 pointer-events-none absolute z-0'
+          }`}
+          data-slide-index={idx}
+        >
+          <!-- High-Definition Artwork Frame -->
+          <div class="relative group max-h-[62vh] max-w-[85vw] lg:max-w-[55vw]">
+            <div class="bg-[#141413]/90 p-3 sm:p-4 border border-white/25 shadow-[0_35px_90px_rgba(0,0,0,0.9)] relative">
+              <Image
+                src={art.image}
+                alt={`COSMOS — ${art.title} (${art.year})`}
+                class="max-h-[55vh] w-auto object-contain img-museum"
+                width={1400}
+                height={950}
+                loading={idx === 0 ? "eager" : "lazy"}
+              />
+
+              <!-- Ambient Spot Glow Effect -->
+              <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-64 h-10 bg-gradient-to-b from-white/30 to-transparent blur-lg pointer-events-none" />
+            </div>
+          </div>
+
+          <!-- Glassmorphism Curatorial Cartel Panel -->
+          <div class="bg-[#141413]/85 backdrop-blur-2xl p-6 sm:p-8 border border-white/20 max-w-md w-full shadow-[0_20px_50px_rgba(0,0,0,0.6)] space-y-4">
+            <div class="flex items-center justify-between border-b border-white/15 pb-3">
+              <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C4B59D] font-bold">
+                FIG. {art.fig}
+              </span>
+              <span class="text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1 bg-[#F9F8F5] text-[#141413] font-bold">
+                {art.status}
+              </span>
+            </div>
+
+            <div>
+              <h2 class="font-serif-display text-3xl font-bold text-[#F9F8F5]">
+                {art.title}
+              </h2>
+              <p class="text-xs font-mono text-[#C4B59D] mt-1">
+                {art.year} · MONOGRAPHIE
+              </p>
+            </div>
+
+            <div class="space-y-1.5 text-xs text-[#F9F8F5]">
+              <p><strong class="font-mono text-[10px] text-[#C4B59D] block uppercase">Medium</strong> {art.medium}</p>
+              <p><strong class="font-mono text-[10px] text-[#C4B59D] block uppercase">Dimensions</strong> {art.dimensions}</p>
+            </div>
+
+            <p class="text-xs text-[#9C9991] font-light leading-relaxed pt-2 border-t border-white/15">
+              {art.description}
+            </p>
+
+            <a
+              href={`/contact?oeuvre=${encodeURIComponent(art.title)}`}
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#F9F8F5] text-[#141413] text-xs font-mono uppercase tracking-[0.18em] font-bold hover:bg-[#C4B59D] hover:text-[#141413] transition-colors"
+            >
+              <span>Se renseigner sur cette pièce</span>
+              <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Bottom Thumbnails Strip Navigation Bar -->
+    <div class="max-w-[1600px] w-full mx-auto pt-4 z-20">
+      <div class="border-t border-white/20 pt-4 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+        {artworksData.map((art, idx) => (
+          <button
+            type="button"
+            class={`v4-thumb shrink-0 border border-white/30 p-1 bg-[#141413] transition-all cursor-pointer ${
+              idx === 0 ? 'border-[#C4B59D] ring-2 ring-[#C4B59D]/50 scale-105 opacity-100' : 'opacity-60 hover:opacity-100'
+            }`}
+            data-thumb-index={idx}
+            aria-label={`Voir l'œuvre ${art.title}`}
+          >
+            <Image
+              src={art.image}
+              alt={art.title}
+              class="w-16 h-12 object-cover"
+              width={100}
+              height={75}
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+
+  </section>
+</BaseLayout>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.v4-slide');
+  const bgLayers = document.querySelectorAll('.v4-bg-layer');
+  const thumbs = document.querySelectorAll('.v4-thumb');
+  const counter = document.getElementById('v4-counter');
+  const btnPrev = document.getElementById('v4-prev');
+  const btnNext = document.getElementById('v4-next');
+
+  function goToSlide(index: number) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentIndex = index;
+
+    // Slide transition
+    slides.forEach((slide, idx) => {
+      if (idx === currentIndex) {
+        slide.classList.remove('opacity-0', 'scale-95', 'pointer-events-none', 'absolute', 'z-0');
+        slide.classList.add('opacity-100', 'scale-100', 'pointer-events-auto', 'relative', 'z-10');
+      } else {
+        slide.classList.remove('opacity-100', 'scale-100', 'relative', 'z-10');
+        slide.classList.add('opacity-0', 'scale-95', 'pointer-events-none', 'absolute', 'z-0');
+      }
+    });
+
+    // Background Layer transition (Dynamic blurred ambient glow)
+    bgLayers.forEach((bg, idx) => {
+      if (idx === currentIndex) {
+        bg.classList.remove('opacity-0', 'scale-115');
+        bg.classList.add('opacity-65', 'scale-105');
+      } else {
+        bg.classList.remove('opacity-65', 'scale-105');
+        bg.classList.add('opacity-0', 'scale-115');
+      }
+    });
+
+    // Thumbnail state
+    thumbs.forEach((thumb, idx) => {
+      if (idx === currentIndex) {
+        thumb.classList.add('border-[#C4B59D]', 'ring-2', 'ring-[#C4B59D]/50', 'scale-105', 'opacity-100');
+        thumb.classList.remove('opacity-60');
+      } else {
+        thumb.classList.remove('border-[#C4B59D]', 'ring-2', 'ring-[#C4B59D]/50', 'scale-105', 'opacity-100');
+        thumb.classList.add('opacity-60');
+      }
+    });
+
+    if (counter) {
+      const numStr = (currentIndex + 1).toString().padStart(2, '0');
+      counter.innerHTML = `${numStr} <span class="text-[#9C9991] font-normal">/ ${slides.length}</span>`;
+    }
+  }
+
+  btnPrev?.addEventListener('click', () => goToSlide(currentIndex - 1));
+  btnNext?.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      const idx = parseInt(thumb.getAttribute('data-thumb-index') || '0', 10);
+      goToSlide(idx);
+    });
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+    if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+  });
+</script>

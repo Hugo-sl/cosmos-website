@@ -1,0 +1,186 @@
+---
+import { Image } from 'astro:assets';
+import { artworksData, type Artwork } from '../data/artworks';
+import ArtworkModal from './ArtworkModal.astro';
+import { Maximize2, ArrowUpRight } from '@lucide/astro';
+
+export interface Props {
+  limit?: number;
+  showFilters?: boolean;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  limit = 10,
+  showFilters = true,
+  title = "Catalogue des Œuvres",
+  subtitle = "SÉLECTION PERMANENTE & RÉCENTES CRÉATIONS",
+} = Astro.props;
+
+const displayedArtworks = artworksData.slice(0, limit);
+---
+
+<section id="catalogue-section" aria-labelledby="catalogue-title" class="py-20 lg:py-28 bg-[#F9F8F5]">
+  <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end border-b border-hairline pb-8 mb-12 gap-6">
+      <div>
+        <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] block font-bold mb-2">
+          {subtitle}
+        </span>
+        <h2 id="catalogue-title" class="font-serif-display text-4xl sm:text-6xl text-[#141413] font-bold tracking-tight">
+          {title}
+        </h2>
+      </div>
+
+      <!-- Filters (if enabled) -->
+      {showFilters && (
+        <div id="artwork-filters" class="flex flex-wrap gap-2 text-xs font-mono uppercase tracking-[0.18em]">
+          <button data-filter="all" class="px-4 py-2 border border-[#141413] bg-[#141413] text-[#F9F8F5] transition-all font-semibold cursor-pointer">
+            Toutes ({artworksData.length})
+          </button>
+          <button data-filter="Disponible" class="px-4 py-2 border border-hairline text-[#666460] hover:text-[#141413] hover:border-[#141413] transition-all cursor-pointer">
+            Disponibles
+          </button>
+          <button data-filter="Collection Privée" class="px-4 py-2 border border-hairline text-[#666460] hover:text-[#141413] hover:border-[#141413] transition-all cursor-pointer">
+            Collections Privées
+          </button>
+          <button data-filter="En Galerie" class="px-4 py-2 border border-hairline text-[#666460] hover:text-[#141413] hover:border-[#141413] transition-all cursor-pointer">
+            En Galerie
+          </button>
+        </div>
+      )}
+    </div>
+
+    <!-- Asymmetric Exhibition Layout Grid -->
+    <div id="artwork-grid" class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      
+      {displayedArtworks.map((art, idx) => {
+        // Create dynamic column spans for a museum book layout rhythm
+        let colClass = "md:col-span-6 lg:col-span-4";
+        if (idx === 0) colClass = "md:col-span-12 lg:col-span-7";
+        else if (idx === 1) colClass = "md:col-span-6 lg:col-span-5";
+        else if (idx === 8) colClass = "md:col-span-12 lg:col-span-8";
+        else if (idx === 9) colClass = "md:col-span-6 lg:col-span-4";
+
+        return (
+          <article
+            class={`artwork-card ${colClass} group relative flex flex-col`}
+            data-status={art.status}
+          >
+            <!-- Image Frame -->
+            <div
+              class="artwork-trigger bg-[#F2F0EB] border border-hairline overflow-hidden cursor-pointer relative"
+              data-fig={art.fig}
+              data-title={art.title}
+              data-year={art.year}
+              data-medium={art.medium}
+              data-dimensions={art.dimensions}
+              data-status={art.status}
+              data-description={art.description}
+              data-image-src={art.image.src}
+            >
+              <div class={art.aspectRatio}>
+                <Image
+                  src={art.image}
+                  alt={`COSMOS — ${art.title} (${art.year}), ${art.medium}`}
+                  class="w-full h-full object-cover img-museum"
+                  width={1200}
+                  height={900}
+                  loading={idx < 2 ? "eager" : "lazy"}
+                />
+              </div>
+
+              <!-- Quick Zoom Badge on Hover -->
+              <div class="absolute inset-0 bg-[#141413]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="inline-flex items-center gap-2 bg-[#F9F8F5] text-[#141413] px-4 py-2.5 text-[10px] font-mono uppercase tracking-[0.2em] font-bold shadow-lg">
+                  <Maximize2 class="w-3.5 h-3.5 text-[#8C7A5E]" aria-hidden="true" />
+                  <span>Voir l'œuvre</span>
+                </span>
+              </div>
+
+              <!-- Status Tag -->
+              <span class={`absolute top-3 left-3 text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1 text-[#F9F8F5] shadow-sm ${
+                art.status === 'Disponible' ? 'bg-[#141413]' : 'bg-[#666460]'
+              }`}>
+                {art.status}
+              </span>
+            </div>
+
+            <!-- Cartel Footer Below Image -->
+            <div class="mt-4 pt-3 border-t border-hairline flex flex-col justify-between gap-1">
+              <div class="flex items-baseline justify-between">
+                <h3 class="font-serif-display text-2xl text-[#141413] font-bold group-hover:text-[#8C7A5E] transition-colors">
+                  {art.title}
+                </h3>
+                <span class="text-[10px] font-mono text-[#8C7A5E] font-bold">
+                  FIG. {art.fig}
+                </span>
+              </div>
+              <p class="text-xs text-[#666460] font-sans font-light">
+                {art.medium} · {art.dimensions} ({art.year})
+              </p>
+            </div>
+          </article>
+        );
+      })}
+
+    </div>
+
+  </div>
+
+  <!-- Artwork Detail Modal Component -->
+  <ArtworkModal />
+</section>
+
+<script>
+  // Filter logic
+  const filterButtons = document.querySelectorAll('#artwork-filters button');
+  const cards = document.querySelectorAll('.artwork-card');
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      
+      // Update button styling
+      filterButtons.forEach((b) => {
+        b.classList.remove('bg-[#141413]', 'text-[#F9F8F5]', 'font-semibold');
+        b.classList.add('text-[#666460]', 'border-hairline');
+      });
+      btn.classList.add('bg-[#141413]', 'text-[#F9F8F5]', 'font-semibold');
+      btn.classList.remove('text-[#666460]');
+
+      // Filter cards
+      cards.forEach((card) => {
+        const cardStatus = card.getAttribute('data-status');
+        if (filter === 'all' || cardStatus === filter) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Modal trigger logic
+  const triggers = document.querySelectorAll('.artwork-trigger');
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const data = {
+        fig: trigger.getAttribute('data-fig') || '',
+        title: trigger.getAttribute('data-title') || '',
+        year: trigger.getAttribute('data-year') || '',
+        medium: trigger.getAttribute('data-medium') || '',
+        dimensions: trigger.getAttribute('data-dimensions') || '',
+        status: trigger.getAttribute('data-status') || '',
+        description: trigger.getAttribute('data-description') || '',
+        imageSrc: trigger.getAttribute('data-image-src') || '',
+      };
+      if ((window as any).openArtworkModal) {
+        (window as any).openArtworkModal(data);
+      }
+    });
+  });
+</script>

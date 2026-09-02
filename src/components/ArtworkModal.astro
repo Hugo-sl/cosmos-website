@@ -1,0 +1,167 @@
+---
+import { X, ArrowUpRight, ShieldCheck, Maximize2 } from '@lucide/astro';
+---
+
+<div
+  id="artwork-modal"
+  class="fixed inset-0 z-[100] hidden bg-[#141413]/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <!-- Modal Container -->
+  <div class="bg-[#F9F8F5] text-[#141413] w-full max-w-5xl max-h-[92vh] overflow-y-auto border border-hairline shadow-2xl relative flex flex-col lg:flex-row">
+    
+    <!-- Close Button -->
+    <button
+      id="close-modal-btn"
+      type="button"
+      aria-label="Fermer la vue détaillée de l'œuvre"
+      class="absolute top-4 right-4 z-20 p-3 bg-[#141413] text-[#F9F8F5] hover:bg-[#8C7A5E] transition-colors"
+    >
+      <X class="w-5 h-5" aria-hidden="true" />
+    </button>
+
+    <!-- Left Image Display Panel -->
+    <div class="lg:w-3/5 bg-[#F2F0EB] p-6 sm:p-10 flex items-center justify-center relative min-h-[350px]">
+      <img
+        id="modal-image"
+        src=""
+        alt=""
+        class="max-h-[70vh] w-auto object-contain shadow-md border border-hairline transition-all duration-500"
+      />
+    </div>
+
+    <!-- Right Museum Cartel & Inquiry Details -->
+    <div class="lg:w-2/5 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+      
+      <div class="space-y-4">
+        <!-- Fig & Availability Tag -->
+        <div class="flex items-center justify-between border-b border-hairline pb-3">
+          <span id="modal-fig" class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] font-bold">
+            FIG. 00
+          </span>
+          <span id="modal-status" class="text-[10px] font-mono uppercase tracking-[0.18em] px-2.5 py-1 bg-[#141413] text-[#F9F8F5]">
+            Disponible
+          </span>
+        </div>
+
+        <!-- Title & Year -->
+        <div>
+          <h3 id="modal-title" class="font-serif-display text-3xl sm:text-4xl font-bold tracking-tight text-[#141413]">
+            Titre de l'Œuvre
+          </h3>
+          <p id="modal-year" class="text-xs font-mono text-[#666460] mt-1">
+            2024
+          </p>
+        </div>
+
+        <!-- Technical Details Cartel -->
+        <div class="bg-[#F2F0EB] p-4 border border-hairline space-y-2 text-xs font-sans">
+          <div>
+            <strong class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8C7A5E] block">TECHNIQUE & MEDIUM</strong>
+            <span id="modal-medium" class="text-[#141413]">Technique mixte sur lin</span>
+          </div>
+          <div>
+            <strong class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8C7A5E] block">DIMENSIONS</strong>
+            <span id="modal-dimensions" class="text-[#141413]">120 × 100 cm</span>
+          </div>
+        </div>
+
+        <!-- Curatorial Description -->
+        <p id="modal-description" class="text-xs text-[#666460] leading-relaxed font-light">
+          Description théorique et plastique de l'œuvre...
+        </p>
+      </div>
+
+      <!-- Action & Certificate -->
+      <div class="space-y-4 pt-4 border-t border-hairline">
+        <a
+          id="modal-inquire-btn"
+          href="/contact"
+          class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#141413] text-[#F9F8F5] text-xs font-mono uppercase tracking-[0.2em] font-semibold hover:bg-[#8C7A5E] transition-colors"
+        >
+          <span>Se renseigner sur cette œuvre</span>
+          <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+        </a>
+
+        <div class="flex items-center gap-2 text-[10px] font-mono text-[#666460] justify-center">
+          <ShieldCheck class="w-4 h-4 text-[#8C7A5E]" aria-hidden="true" />
+          <span>CERTIFICAT D'AUTHENTICITÉ SIGNÉ PAR L'ARTISTE</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  interface ArtworkModalData {
+    fig: string;
+    title: string;
+    year: string;
+    medium: string;
+    dimensions: string;
+    status: string;
+    description: string;
+    imageSrc: string;
+  }
+
+  const modal = document.getElementById('artwork-modal');
+  const closeBtn = document.getElementById('close-modal-btn');
+  const modalImg = document.getElementById('modal-image') as HTMLImageElement;
+  const modalFig = document.getElementById('modal-fig');
+  const modalTitle = document.getElementById('modal-title');
+  const modalYear = document.getElementById('modal-year');
+  const modalMedium = document.getElementById('modal-medium');
+  const modalDimensions = document.getElementById('modal-dimensions');
+  const modalStatus = document.getElementById('modal-status');
+  const modalDescription = document.getElementById('modal-description');
+  const modalInquireBtn = document.getElementById('modal-inquire-btn') as HTMLAnchorElement;
+
+  function openModal(data: ArtworkModalData) {
+    if (!modal) return;
+    if (modalImg) {
+      modalImg.src = data.imageSrc;
+      modalImg.alt = `Vue haute définition de l'œuvre ${data.title} par COSMOS`;
+    }
+    if (modalFig) modalFig.textContent = `FIG. ${data.fig}`;
+    if (modalTitle) modalTitle.textContent = data.title;
+    if (modalYear) modalYear.textContent = data.year;
+    if (modalMedium) modalMedium.textContent = data.medium;
+    if (modalDimensions) modalDimensions.textContent = data.dimensions;
+    if (modalStatus) modalStatus.textContent = data.status;
+    if (modalDescription) modalDescription.textContent = data.description;
+    if (modalInquireBtn) {
+      modalInquireBtn.href = `/contact?oeuvre=${encodeURIComponent(data.title)}`;
+    }
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
+  // Expose to window for gallery trigger
+  (window as any).openArtworkModal = openModal;
+</script>

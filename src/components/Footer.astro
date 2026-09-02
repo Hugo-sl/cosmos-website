@@ -1,0 +1,93 @@
+---
+import { ArrowUpRight, ArrowUp } from '@lucide/astro';
+
+export interface Props {
+  siteName?: string;
+}
+
+const { siteName = 'COSMOS' } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[#141413] text-[#F9F8F5] pt-20 pb-12 border-t border-hairline-dark relative overflow-hidden">
+  
+  <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+    
+    <!-- Top Header in Footer -->
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end pb-16 border-b border-hairline-dark gap-8">
+      <div>
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#9C9991] block mb-2">
+          ATELIER & ÉDITION MONOGRAPHIQUE
+        </span>
+        <h2 class="font-serif-display text-4xl sm:text-6xl text-[#F9F8F5] font-bold tracking-tight">
+          COSMOS
+        </h2>
+        <p class="text-xs font-sans text-[#9C9991] mt-2 font-light max-w-md">
+          Peinture contemporaine, Action Painting & recherches typographiques urbaines.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-3 px-6 py-3 bg-[#F9F8F5] text-[#141413] text-xs font-mono uppercase tracking-[0.2em] font-semibold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-all duration-300"
+        >
+          <span>Contacter l'Atelier</span>
+          <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+        </a>
+        <a
+          href="#main-content"
+          class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-[#9C9991] hover:text-[#F9F8F5] transition-colors py-3 px-4"
+        >
+          <span>Haut de page</span>
+          <ArrowUp class="w-3.5 h-3.5" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation & Information Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 py-16 border-b border-hairline-dark">
+      
+      <div class="md:col-span-4 space-y-4">
+        <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] font-bold block">
+          L'ATELIER & LES PIÈCES
+        </span>
+        <p class="text-xs text-[#9C9991] leading-relaxed font-light">
+          Chaque œuvre est une pièce originale unique délivrée avec son certificat d'authenticité signé par l'artiste. Visites d'atelier sur rendez-vous pour collectionneurs et galeries.
+        </p>
+      </div>
+
+      <div class="md:col-span-3 space-y-3">
+        <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] font-bold block">
+          SOMMAIRE
+        </span>
+        <nav aria-label="Navigation pied de page" class="flex flex-col gap-2 text-xs font-sans">
+          <a href="/" class="text-[#9C9991] hover:text-[#F9F8F5] transition-colors">01. Accueil & Sélection</a>
+          <a href="/galerie" class="text-[#9C9991] hover:text-[#F9F8F5] transition-colors">02. Catalogue des Œuvres</a>
+          <a href="/a-propos" class="text-[#9C9991] hover:text-[#F9F8F5] transition-colors">03. Démarche & CV</a>
+          <a href="/contact" class="text-[#9C9991] hover:text-[#F9F8F5] transition-colors">04. Acquisition & Contact</a>
+        </nav>
+      </div>
+
+      <div class="md:col-span-5 space-y-3">
+        <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] font-bold block">
+          REPRÉSENTATION & RAYONNEMENT
+        </span>
+        <p class="text-xs text-[#9C9991] leading-relaxed font-light">
+          Expositions & Collections permanentes et privées à Paris, Bruxelles, Strasbourg, Lille, Honfleur et Tanger.
+        </p>
+        <div class="pt-2 text-[10px] font-mono text-[#666460]">
+          SIRET / Atelier : Paris & France
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="pt-8 flex flex-wrap justify-between items-center gap-4 text-[10px] font-mono text-[#666460] uppercase tracking-[0.18em]">
+      <span>&copy; {currentYear} {siteName} — Tous droits réservés</span>
+      <span>Monographie Numérique v2.0</span>
+    </div>
+
+  </div>
+</footer>

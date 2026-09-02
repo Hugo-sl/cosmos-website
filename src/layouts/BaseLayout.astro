@@ -1,0 +1,61 @@
+---
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  article?: boolean;
+  currentPath?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  article = false,
+  currentPath = Astro.url.pathname,
+} = Astro.props;
+
+const isNoSpacerPage = currentPath === '/accueil-v2';
+---
+
+<!DOCTYPE html>
+<html lang="fr" class="bg-[#F9F8F5] text-[#141413]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO title={title} description={description} image={image} article={article} />
+  </head>
+
+  <body class="min-h-screen flex flex-col bg-[#F9F8F5] text-[#141413] font-sans antialiased overflow-x-hidden">
+    
+    <!-- Accessibility Skip Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-6 focus:py-3 focus:bg-[#141413] focus:text-[#F9F8F5] text-xs font-mono uppercase tracking-widest"
+    >
+      Aller au contenu principal
+    </a>
+
+    <!-- Header Navigation -->
+    <Header currentPath={currentPath} />
+
+    <!-- Top Spacer for Fixed Header (Hidden on Full-Bleed Pages like Accueil V2) -->
+    {!isNoSpacerPage && <div class="h-20" />}
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow relative">
+      <slot />
+    </main>
+
+    <!-- Footer Colophon -->
+    <Footer />
+
+  </body>
+</html>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section12Hero from '../components/originkit/hero-03';
+import { Image } from 'astro:assets';
+import { ArrowUpRight } from '@lucide/astro';
+
+import imgCubaLibre from '../assets/oeuvres/CUBA-LIBRE.webp';
+import imgSierraNevada from '../assets/oeuvres/SIERRA NEVADA 80X80.webp';
+---
+
+<BaseLayout
+  title="Accueil V3 — Hero 03 Originkit WebGL 3D"
+  description="Expérience d'immersion totale 3D perspective avec le composant officiel Hero-03 Originkit pour les toiles de COSMOS."
+  currentPath="/accueil-v3"
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO 03 ORIGINKIT OFFICIAL THREE.JS WEBGL COMPONENT
+       ═══════════════════════════════════════════════════════════════ -->
+  <Section12Hero client:load />
+
+  <!-- 2. EXHIBITION DETAILS SECTION -->
+  <section id="exhibition-details" class="py-24 lg:py-32 bg-[#F9F8F5] border-b border-hairline text-[#141413]">
+    <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">
+            L'EXPÉRIENCE DU GESTE
+          </span>
+          <h2 class="font-serif-display text-4xl sm:text-6xl text-[#141413] font-bold tracking-tight leading-[0.9]">
+            La Fusion des Deux Mondes
+          </h2>
+          <p class="text-sm text-[#666460] font-light leading-relaxed">
+            L'artiste aborde chaque toile comme un sanctuaire d'énergie. Des strates de bombes aérosol aux coulures à l'huile, l'œuvre capture l'urgence de la rue et la pérennité du musée.
+          </p>
+          <div class="pt-2">
+            <a
+              href="/a-propos"
+              class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#141413] hover:text-[#8C7A5E] transition-colors border-b border-[#141413] pb-1 font-bold"
+            >
+              <span>Lire la biographie curatoriale</span>
+              <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+          <div class="aspect-[3/4] bg-[#F2F0EB] border border-hairline overflow-hidden">
+            <Image src={imgCubaLibre} alt="COSMOS — Cuba Libre" class="w-full h-full object-cover img-museum" width={600} height={800} />
+          </div>
+          <div class="aspect-[3/4] bg-[#F2F0EB] border border-hairline overflow-hidden mt-8">
+            <Image src={imgSierraNevada} alt="COSMOS — Sierra Nevada" class="w-full h-full object-cover img-museum" width={600} height={800} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ATELIER & CONTACT CTA -->
+  <section class="py-24 bg-[#141413] text-[#F9F8F5]">
+    <div class="max-w-[1200px] mx-auto px-6 text-center space-y-8">
+      <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">
+        RÉSERVATIONS & GALERIES
+      </span>
+      <h2 class="font-serif-display text-4xl sm:text-6xl font-bold tracking-tight">
+        Visite Privée de l'Atelier
+      </h2>
+      <p class="text-xs sm:text-sm text-[#9C9991] font-light max-w-xl mx-auto leading-relaxed">
+        Découvrez les nouvelles créations en avant-première et étudiez la réalisation d'œuvres sur-mesure avec l'artiste.
+      </p>
+      <div class="pt-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-[#F9F8F5] text-[#141413] text-xs font-mono uppercase tracking-[0.2em] font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-colors"
+        >
+          <span>Prendre rendez-vous au studio</span>
+          <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

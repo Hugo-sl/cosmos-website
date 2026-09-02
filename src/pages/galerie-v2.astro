@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { artworksData } from '../data/artworks';
+import { ChevronLeft, ChevronRight, ArrowUpRight, Maximize2, ShieldCheck, Grid } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Galerie V2 — Wall Slider Horizontal In Situ"
+  description="Expérience d'accrochage immersif en slider horizontal grand format pour les toiles de COSMOS."
+  currentPath="/galerie-v2"
+>
+  <!-- Top Bar with Version Switcher & Monograph Meta -->
+  <header class="bg-[#F3F1EC] border-b border-hairline py-4 px-6 sm:px-10">
+    <div class="max-w-[1600px] mx-auto flex flex-wrap justify-between items-center gap-4 text-xs font-mono">
+      
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 bg-[#8C7A5E] rounded-full"></span>
+        <span class="font-bold text-[#141413]">GALERIE V2</span>
+        <span class="text-[#666460]">· WALL SLIDER HORIZONTAL IN SITU</span>
+      </div>
+
+      <!-- Quick Version Switcher Bar -->
+      <nav aria-label="Versions de galerie" class="flex items-center gap-2 text-[10px] uppercase tracking-wider">
+        <a href="/galerie" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V1 Grille</a>
+        <span class="px-3 py-1.5 bg-[#141413] text-[#F9F8F5] font-bold">V2 Slider</span>
+        <a href="/galerie-v3" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V3 Vertical</a>
+        <a href="/galerie-v4" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V4 Lighting</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Main Viewport Slider Area -->
+  <section id="v2-slider-section" class="relative bg-[#EBE8E0] min-h-[calc(100vh-140px)] flex flex-col justify-between overflow-hidden select-none py-6">
+    
+    <!-- Controls Overlay Header -->
+    <div class="max-w-[1600px] w-full mx-auto px-6 sm:px-10 flex justify-between items-center z-20">
+      <div>
+        <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] font-bold block">
+          ACCROCHAGE MUSÉAL
+        </span>
+        <h1 class="font-serif-display text-2xl sm:text-3xl font-bold text-[#141413]">
+          Exposition In Situ
+        </h1>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <!-- Counter -->
+        <span id="v2-counter" class="text-sm font-mono font-bold text-[#141413]">
+          01 <span class="text-[#666460] font-normal">/ {artworksData.length}</span>
+        </span>
+        <!-- Prev / Next Nav Buttons -->
+        <div class="flex items-center gap-2">
+          <button id="v2-prev" type="button" aria-label="Œuvre précédente" class="p-3 bg-[#F9F8F5] text-[#141413] border border-hairline hover:bg-[#141413] hover:text-[#F9F8F5] transition-colors cursor-pointer">
+            <ChevronLeft class="w-5 h-5" aria-hidden="true" />
+          </button>
+          <button id="v2-next" type="button" aria-label="Œuvre suivante" class="p-3 bg-[#F9F8F5] text-[#141413] border border-hairline hover:bg-[#141413] hover:text-[#F9F8F5] transition-colors cursor-pointer">
+            <ChevronRight class="w-5 h-5" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Artwork Wall Display -->
+    <div class="relative w-full my-auto flex items-center justify-center px-4 sm:px-12 py-4">
+      
+      {artworksData.map((art, idx) => (
+        <div
+          class={`v2-slide transition-all duration-700 ease-out flex flex-col lg:flex-row items-center justify-center gap-8 max-w-[1400px] w-full ${
+            idx === 0 ? 'opacity-100 scale-100 pointer-events-auto relative z-10' : 'opacity-0 scale-95 pointer-events-none absolute z-0'
+          }`}
+          data-slide-index={idx}
+        >
+          <!-- Artwork Hanging on Wall Frame with realistic drop shadow -->
+          <div class="relative group max-h-[62vh] max-w-[85vw] lg:max-w-[65vw]">
+            <div class="bg-[#F9F8F5] p-3 sm:p-4 border border-hairline shadow-[0_25px_60px_-15px_rgba(20,20,19,0.25)] relative">
+              <Image
+                src={art.image}
+                alt={`COSMOS — ${art.title} (${art.year})`}
+                class="max-h-[55vh] w-auto object-contain img-museum"
+                width={1400}
+                height={950}
+                loading={idx === 0 ? "eager" : "lazy"}
+              />
+
+              <!-- Wall Spot Light Highlight Effect -->
+              <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-12 bg-gradient-to-b from-white/40 to-transparent blur-md pointer-events-none" />
+            </div>
+          </div>
+
+          <!-- Floating Cartel Panel -->
+          <div class="bg-[#F9F8F5]/95 backdrop-blur-md p-6 sm:p-8 border border-hairline max-w-md w-full shadow-lg space-y-4">
+            <div class="flex items-center justify-between border-b border-hairline pb-3">
+              <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] font-bold">
+                FIG. {art.fig}
+              </span>
+              <span class={`text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1 text-[#F9F8F5] ${
+                art.status === 'Disponible' ? 'bg-[#141413]' : 'bg-[#666460]'
+              }`}>
+                {art.status}
+              </span>
+            </div>
+
+            <div>
+              <h2 class="font-serif-display text-3xl font-bold text-[#141413]">
+                {art.title}
+              </h2>
+              <p class="text-xs font-mono text-[#666460] mt-1">
+                {art.year}
+              </p>
+            </div>
+
+            <div class="space-y-1.5 text-xs text-[#141413]">
+              <p><strong class="font-mono text-[10px] text-[#8C7A5E] block uppercase">Technique</strong> {art.medium}</p>
+              <p><strong class="font-mono text-[10px] text-[#8C7A5E] block uppercase">Dimensions</strong> {art.dimensions}</p>
+            </div>
+
+            <p class="text-xs text-[#666460] font-light leading-relaxed pt-2 border-t border-hairline">
+              {art.description}
+            </p>
+
+            <a
+              href={`/contact?oeuvre=${encodeURIComponent(art.title)}`}
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#141413] text-[#F9F8F5] text-xs font-mono uppercase tracking-[0.18em] font-semibold hover:bg-[#8C7A5E] transition-colors pt-3"
+            >
+              <span>Se renseigner sur cette pièce</span>
+              <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Bottom Thumbnails Strip Navigation Bar -->
+    <div class="max-w-[1600px] w-full mx-auto px-6 sm:px-10 pt-4 z-20">
+      <div class="border-t border-hairline pt-4 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+        {artworksData.map((art, idx) => (
+          <button
+            type="button"
+            class={`v2-thumb shrink-0 border border-hairline p-1 bg-[#F9F8F5] transition-all cursor-pointer ${
+              idx === 0 ? 'border-[#141413] ring-2 ring-[#141413]/20 scale-105' : 'opacity-60 hover:opacity-100'
+            }`}
+            data-thumb-index={idx}
+            aria-label={`Sauter à l'œuvre ${art.title}`}
+          >
+            <Image
+              src={art.image}
+              alt={art.title}
+              class="w-16 h-12 object-cover"
+              width={100}
+              height={75}
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+
+  </section>
+</BaseLayout>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.v2-slide');
+  const thumbs = document.querySelectorAll('.v2-thumb');
+  const counter = document.getElementById('v2-counter');
+  const btnPrev = document.getElementById('v2-prev');
+  const btnNext = document.getElementById('v2-next');
+
+  function goToSlide(index: number) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+
+    currentIndex = index;
+
+    slides.forEach((slide, idx) => {
+      if (idx === currentIndex) {
+        slide.classList.remove('opacity-0', 'scale-95', 'pointer-events-none', 'absolute', 'z-0');
+        slide.classList.add('opacity-100', 'scale-100', 'pointer-events-auto', 'relative', 'z-10');
+      } else {
+        slide.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto', 'relative', 'z-10');
+        slide.classList.add('opacity-0', 'scale-95', 'pointer-events-none', 'absolute', 'z-0');
+      }
+    });
+
+    thumbs.forEach((thumb, idx) => {
+      if (idx === currentIndex) {
+        thumb.classList.add('border-[#141413]', 'ring-2', 'ring-[#141413]/20', 'scale-105', 'opacity-100');
+        thumb.classList.remove('opacity-60');
+      } else {
+        thumb.classList.remove('border-[#141413]', 'ring-2', 'ring-[#141413]/20', 'scale-105', 'opacity-100');
+        thumb.classList.add('opacity-60');
+      }
+    });
+
+    if (counter) {
+      const numStr = (currentIndex + 1).toString().padStart(2, '0');
+      counter.innerHTML = `${numStr} <span class="text-[#666460] font-normal">/ ${slides.length}</span>`;
+    }
+  }
+
+  btnPrev?.addEventListener('click', () => goToSlide(currentIndex - 1));
+  btnNext?.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      const idx = parseInt(thumb.getAttribute('data-thumb-index') || '0', 10);
+      goToSlide(idx);
+    });
+  });
+
+  // Keyboard Navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+    if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+  });
+</script>

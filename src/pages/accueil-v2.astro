@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { ArrowUpRight, ArrowDown } from '@lucide/astro';
+
+import imgTheWall from '../assets/oeuvres/THE-WALL.webp';
+import imgCubaLibre from '../assets/oeuvres/CUBA-LIBRE.webp';
+import imgSierraNevada from '../assets/oeuvres/SIERRA NEVADA 80X80.webp';
+import imgStonedAgain from '../assets/oeuvres/STONED-AGAIN.webp';
+
+const heroArtworks = [
+  { title: "The Wall", year: "2024", image: imgTheWall },
+  { title: "Cuba Libre", year: "2024", image: imgCubaLibre },
+  { title: "Sierra Nevada", year: "2024", image: imgSierraNevada },
+  { title: "Stoned Again", year: "2024", image: imgStonedAgain },
+];
+
+---
+
+<BaseLayout
+  title="Accueil V2 — Immersion Plein Écran Dynamique"
+  description="Expérience d'immersion totale plein écran dans l'univers pictural de COSMOS. Action Painting & Street Art contemporain."
+  currentPath="/accueil-v2"
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO SECTION — FULL-BLEED CINEMATIC WITH MIX-BLEND
+       ═══════════════════════════════════════════════════════════════ -->
+  <section
+    id="hero-v2"
+    class="relative h-screen w-full overflow-hidden select-none bg-[#0E0D0C]"
+  >
+    <!-- Animated Ken Burns Background Artwork Layers -->
+    {heroArtworks.map((art, idx) => (
+      <div
+        class={`hero-bg absolute inset-0 transition-opacity duration-[1.5s] ease-in-out ${
+          idx === 0 ? 'opacity-100' : 'opacity-0'
+        }`}
+        data-hero-bg={idx}
+      >
+        <Image
+          src={art.image}
+          alt=""
+          class="w-full h-full object-cover hero-kenburns"
+          width={1920}
+          height={1080}
+          loading={idx === 0 ? "eager" : "lazy"}
+          aria-hidden="true"
+        />
+      </div>
+    ))}
+
+    <!-- Mouse-Following Spotlight Gradient -->
+    <div id="hero-spotlight" class="absolute inset-0 z-5 pointer-events-none opacity-0 transition-opacity duration-500" />
+
+    <!-- Soft Cinematic Vignette -->
+    <div class="absolute inset-0 z-10 bg-gradient-to-t from-[#0E0D0C]/80 via-transparent to-[#0E0D0C]/50 pointer-events-none" />
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-[#0E0D0C]/40 via-transparent to-[#0E0D0C]/40 pointer-events-none" />
+
+    <!-- ─── MAIN CONTENT LAYER ─── -->
+    <div class="relative z-20 h-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-between pt-28 pb-8">
+
+      <!-- Top Meta Bar -->
+      <div class="flex items-center justify-between gap-4">
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#C4B59D] font-bold">
+          ÉDITION MONOGRAPHIQUE 2024
+        </span>
+        <div class="flex items-center gap-6 text-[10px] font-mono uppercase tracking-[0.25em] text-[#9C9991]">
+          <span class="hidden sm:inline">10 ŒUVRES</span>
+          <span class="hidden sm:inline">·</span>
+          <span>DEPUIS 1987</span>
+        </div>
+      </div>
+
+      <!-- Center Giant Title with Mix-Blend Interaction -->
+      <div class="my-auto flex flex-col items-start gap-2">
+        <h1 class="font-serif-display text-[18vw] lg:text-[16vw] font-bold tracking-[-0.06em] leading-[0.75] text-white mix-blend-difference pointer-events-none">
+          COSMOS
+        </h1>
+        <p class="font-serif-display italic text-xl sm:text-3xl text-[#C4B59D] leading-snug font-normal max-w-2xl drop-shadow-lg pl-1">
+          « L'Énergie du Street Art. La Rigueur de l'Action Painting. »
+        </p>
+      </div>
+
+      <!-- Bottom Bar: Artwork Switcher Pills + CTA -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+
+        <!-- Live Artwork Switcher -->
+        <div class="flex items-end gap-3">
+          {heroArtworks.map((art, idx) => (
+            <button
+              type="button"
+              class={`hero-pill group relative overflow-hidden transition-all duration-500 cursor-pointer border ${
+                idx === 0
+                  ? 'w-20 h-14 sm:w-24 sm:h-16 border-[#C4B59D] ring-2 ring-[#C4B59D]/40'
+                  : 'w-14 h-10 sm:w-16 sm:h-12 border-white/20 opacity-60 hover:opacity-100 hover:border-white/50'
+              }`}
+              data-pill-index={idx}
+              aria-label={`Afficher ${art.title}`}
+            >
+              <Image
+                src={art.image}
+                alt={art.title}
+                class="w-full h-full object-cover"
+                width={120}
+                height={80}
+              />
+              <span class={`absolute bottom-0 left-0 right-0 text-[7px] font-mono uppercase tracking-wider text-center py-0.5 bg-[#0E0D0C]/80 text-[#F9F8F5] ${
+                idx === 0 ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              } transition-opacity`}>
+                {art.title}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <!-- CTA Actions -->
+        <div class="flex items-center gap-3">
+          <a
+            href="/galerie"
+            class="hero-cta relative inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#F9F8F5] text-[#141413] text-xs font-mono uppercase tracking-[0.2em] font-bold hover:bg-[#C4B59D] transition-colors overflow-hidden"
+          >
+            <span class="relative z-10">Entrer dans l'Exposition</span>
+            <ArrowUpRight class="w-4 h-4 relative z-10" aria-hidden="true" />
+          </a>
+          <a
+            href="#exhibition-details"
+            class="p-3.5 border border-white/20 text-[#F9F8F5] hover:bg-[#F9F8F5] hover:text-[#141413] transition-colors backdrop-blur-sm"
+            aria-label="Défiler vers la suite"
+          >
+            <ArrowDown class="w-4 h-4" aria-hidden="true" />
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2. EXHIBITION DETAILS SECTION -->
+  <section id="exhibition-details" class="py-24 lg:py-32 bg-[#F9F8F5] border-b border-hairline">
+    <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">
+            L'EXPÉRIENCE DU GESTE
+          </span>
+          <h2 class="font-serif-display text-4xl sm:text-6xl text-[#141413] font-bold tracking-tight leading-[0.9]">
+            La Fusion des Deux Mondes
+          </h2>
+          <p class="text-sm text-[#666460] font-light leading-relaxed">
+            L'artiste aborde chaque toile comme un sanctuaire d'énergie. Des strates de bombes aérosol aux coulures à l'huile, l'œuvre capture l'urgence de la rue et la pérennité du musée.
+          </p>
+          <div class="pt-2">
+            <a
+              href="/a-propos"
+              class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#141413] hover:text-[#8C7A5E] transition-colors border-b border-[#141413] pb-1 font-bold"
+            >
+              <span>Lire la biographie curatoriale</span>
+              <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+          <div class="aspect-[3/4] bg-[#F2F0EB] border border-hairline overflow-hidden">
+            <Image src={imgCubaLibre} alt="COSMOS — Cuba Libre" class="w-full h-full object-cover img-museum" width={600} height={800} />
+          </div>
+          <div class="aspect-[3/4] bg-[#F2F0EB] border border-hairline overflow-hidden mt-8">
+            <Image src={imgSierraNevada} alt="COSMOS — Sierra Nevada" class="w-full h-full object-cover img-museum" width={600} height={800} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ATELIER & CONTACT CTA -->
+  <section class="py-24 bg-[#141413] text-[#F9F8F5]">
+    <div class="max-w-[1200px] mx-auto px-6 text-center space-y-8">
+      <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">
+        RÉSERVATIONS & GALERIES
+      </span>
+      <h2 class="font-serif-display text-4xl sm:text-6xl font-bold tracking-tight">
+        Visite Privée de l'Atelier
+      </h2>
+      <p class="text-xs sm:text-sm text-[#9C9991] font-light max-w-xl mx-auto leading-relaxed">
+        Découvrez les nouvelles créations en avant-première et étudiez la réalisation d'œuvres sur-mesure avec l'artiste.
+      </p>
+      <div class="pt-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-[#F9F8F5] text-[#141413] text-xs font-mono uppercase tracking-[0.2em] font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-colors"
+        >
+          <span>Prendre rendez-vous au studio</span>
+          <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Ken Burns slow zoom & pan animation on artwork */
+  @keyframes kenburns {
+    0%   { transform: scale(1)   translate(0, 0); }
+    50%  { transform: scale(1.08) translate(-1.5%, -1%); }
+    100% { transform: scale(1)   translate(0, 0); }
+  }
+  .hero-kenburns {
+    animation: kenburns 25s ease-in-out infinite;
+  }
+
+  /* Slow & Luxurious Infinite Marquee Loop */
+  @keyframes marquee {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 55s linear infinite;
+  }
+</style>
+
+<script>
+  // ── Artwork Switcher ──
+  let currentIdx = 0;
+  const bgs = document.querySelectorAll('.hero-bg');
+  const pills = document.querySelectorAll('.hero-pill');
+
+  function setArtwork(index: number) {
+    if (index < 0 || index >= bgs.length) return;
+    currentIdx = index;
+
+    bgs.forEach((bg, i) => {
+      bg.classList.toggle('opacity-100', i === currentIdx);
+      bg.classList.toggle('opacity-0', i !== currentIdx);
+    });
+
+    pills.forEach((pill, i) => {
+      if (i === currentIdx) {
+        pill.classList.add('w-20', 'h-14', 'sm:w-24', 'sm:h-16', 'border-[#C4B59D]', 'ring-2', 'ring-[#C4B59D]/40');
+        pill.classList.remove('w-14', 'h-10', 'sm:w-16', 'sm:h-12', 'border-white/20', 'opacity-60');
+        const label = pill.querySelector('span:last-child') as HTMLElement;
+        if (label) label.classList.add('opacity-100');
+      } else {
+        pill.classList.remove('w-20', 'h-14', 'sm:w-24', 'sm:h-16', 'border-[#C4B59D]', 'ring-2', 'ring-[#C4B59D]/40');
+        pill.classList.add('w-14', 'h-10', 'sm:w-16', 'sm:h-12', 'border-white/20', 'opacity-60');
+        const label = pill.querySelector('span:last-child') as HTMLElement;
+        if (label) label.classList.remove('opacity-100');
+      }
+    });
+  }
+
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const idx = parseInt(pill.getAttribute('data-pill-index') || '0', 10);
+      setArtwork(idx);
+    });
+  });
+
+  // ── Mouse-Following Spotlight ──
+  const hero = document.getElementById('hero-v2');
+  const spotlight = document.getElementById('hero-spotlight');
+
+  if (hero && spotlight) {
+    hero.addEventListener('mouseenter', () => {
+      spotlight.style.opacity = '1';
+    });
+    hero.addEventListener('mouseleave', () => {
+      spotlight.style.opacity = '0';
+    });
+    hero.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = hero.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(140,122,94,0.12), transparent 70%)`;
+    });
+  }
+</script>

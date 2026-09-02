@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { artworksData } from '../data/artworks';
+import { ArrowUpRight, ArrowDown } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Galerie V3 — Scroll Scénographique Grand Format"
+  description="Exposition cinématique en défilement vertical grand format (Full-Screen In Situ) des œuvres de COSMOS."
+  currentPath="/galerie-v3"
+>
+  <!-- Top Bar with Version Switcher -->
+  <header class="bg-[#F3F1EC]/90 backdrop-blur-md border-b border-hairline py-3 px-6 sm:px-10 fixed top-20 left-0 right-0 z-40">
+    <div class="max-w-[1600px] mx-auto flex flex-wrap justify-between items-center gap-4 text-xs font-mono">
+      
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 bg-[#8C7A5E] rounded-full"></span>
+        <span class="font-bold text-[#141413]">GALERIE V3</span>
+        <span class="text-[#666460]">· SCROLL SCÉNOGRAPHIQUE GRAND FORMAT</span>
+      </div>
+
+      <!-- Quick Version Switcher Bar -->
+      <nav aria-label="Versions de galerie" class="flex items-center gap-2 text-[10px] uppercase tracking-wider">
+        <a href="/galerie" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V1 Grille</a>
+        <a href="/galerie-v2" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V2 Slider</a>
+        <span class="px-3 py-1.5 bg-[#141413] text-[#F9F8F5] font-bold">V3 Vertical</span>
+        <a href="/galerie-v4" class="px-3 py-1.5 border border-hairline text-[#666460] hover:text-[#141413] bg-[#F9F8F5]">V4 Atmosphere</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Fullscreen Soft Snap Viewport Container -->
+  <div id="v3-scroll-container" class="h-[calc(100vh-80px)] overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#F9F8F5] pt-12">
+    
+    {artworksData.map((art, idx) => (
+      <section
+        class="v3-section h-[calc(100vh-80px)] w-full snap-start snap-always flex flex-col lg:flex-row items-center justify-between p-6 sm:p-12 lg:px-16 pt-28 pb-12 border-b border-hairline relative bg-[#F9F8F5] overflow-hidden"
+        id={`v3-art-${idx}`}
+        data-section-index={idx}
+      >
+        <!-- Background Index Watermark Number -->
+        <div class="v3-watermark absolute bottom-6 right-8 font-serif-display text-[22vw] leading-none text-[#141413]/5 pointer-events-none select-none transition-opacity duration-700" aria-hidden="true">
+          {art.fig}
+        </div>
+
+        <!-- Left Curatorial Info Panel -->
+        <div class="v3-cartel lg:w-5/12 space-y-6 z-10 max-w-lg transition-opacity duration-700">
+          <div class="flex items-center justify-between border-b border-hairline pb-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold">
+              ACCROCHAGE N° {art.fig} / {artworksData.length.toString().padStart(2, '0')}
+            </span>
+            <span class="text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1 bg-[#141413] text-[#F9F8F5]">
+              {art.status}
+            </span>
+          </div>
+
+          <div>
+            <h2 class="font-serif-display text-4xl sm:text-6xl font-bold tracking-tight text-[#141413]">
+              {art.title}
+            </h2>
+            <p class="text-xs font-mono text-[#666460] mt-1">
+              ÉDITION {art.year} · MONOGRAPHIE
+            </p>
+          </div>
+
+          <div class="bg-[#F3F1EC] p-4 border border-hairline space-y-1.5 text-xs font-sans">
+            <p><strong class="font-mono text-[10px] text-[#8C7A5E] uppercase block">TECHNIQUE & MEDIUM</strong> {art.medium}</p>
+            <p><strong class="font-mono text-[10px] text-[#8C7A5E] uppercase block">FORMAT SUR CHÂSSIS</strong> {art.dimensions}</p>
+          </div>
+
+          <p class="text-xs text-[#666460] leading-relaxed font-light">
+            {art.description}
+          </p>
+
+          <div class="pt-2 flex items-center gap-4">
+            <a
+              href={`/contact?oeuvre=${encodeURIComponent(art.title)}`}
+              class="inline-flex items-center gap-2 px-6 py-3.5 bg-[#141413] text-[#F9F8F5] text-xs font-mono uppercase tracking-[0.18em] font-semibold hover:bg-[#8C7A5E] transition-colors"
+            >
+              <span>Se renseigner</span>
+              <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+            </a>
+
+            {idx < artworksData.length - 1 && (
+              <button
+                type="button"
+                class="v3-next-btn inline-flex items-center gap-1 text-xs font-mono uppercase tracking-[0.18em] text-[#666460] hover:text-[#141413] transition-colors py-3 cursor-pointer"
+                data-target-index={idx + 1}
+              >
+                <span>Œuvre suivante</span>
+                <ArrowDown class="w-3.5 h-3.5" aria-hidden="true" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        <!-- Right Grand Artwork Wall Display (Grand Scale: max-h-[66vh]) -->
+        <div class="v3-artwork lg:w-7/12 w-full flex items-center justify-center p-2 sm:p-6 z-10 my-auto transition-opacity duration-700">
+          <div class="relative bg-[#F2F0EB] p-4 sm:p-6 border border-hairline shadow-[0_30px_70px_-15px_rgba(20,20,19,0.2)]">
+            <Image
+              src={art.image}
+              alt={`COSMOS — ${art.title}`}
+              class="max-h-[62vh] sm:max-h-[66vh] w-auto object-contain img-museum"
+              width={1600}
+              height={1100}
+              loading={idx === 0 ? "eager" : "lazy"}
+            />
+          </div>
+        </div>
+
+      </section>
+    ))}
+
+    <!-- Footer Snap Section -->
+    <div class="snap-start snap-always min-h-[50vh] bg-[#141413] text-[#F9F8F5] p-12 flex items-center justify-center">
+      <div class="text-center space-y-4 max-w-xl">
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] font-bold block">FIN DE L'EXPOSITION</span>
+        <h3 class="font-serif-display text-3xl font-bold">COSMOS — Monographie</h3>
+        <p class="text-xs text-[#9C9991] font-light">
+          Pour en savoir plus sur les acquisitions ou organiser une visite privée d'atelier.
+        </p>
+        <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-[#F9F8F5] text-[#141413] font-mono text-xs uppercase tracking-widest font-bold hover:bg-[#8C7A5E] hover:text-[#F9F8F5] transition-colors">
+          <span>Contacter le Studio</span>
+          <ArrowUpRight class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script>
+  const nextBtns = document.querySelectorAll('.v3-next-btn');
+
+  function scrollToIndex(idx: number) {
+    const targetSection = document.getElementById(`v3-art-${idx}`);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  nextBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-target-index') || '0', 10);
+      scrollToIndex(idx);
+    });
+  });
+</script>

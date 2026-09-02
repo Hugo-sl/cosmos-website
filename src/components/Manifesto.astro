@@ -1,0 +1,89 @@
+---
+export interface Props {
+  quote?: string;
+  author?: string;
+  role?: string;
+}
+
+const {
+  quote = "Il y a d'abord le choc des couleurs, si vivifiantes qu'elles nous traversent d'une énergie fraîche. Puis vient la densité : ce remplissage total jusqu'à la limite de la toile, sans aucun vide, qui exprime le trop-plein d'un monde saturé de signes, sur le point d'exploser.",
+  author = "Florence Ormezzano",
+  role = "Médiatrice Culturelle",
+} = Astro.props;
+
+const words = quote.split(' ');
+---
+
+<section aria-label="Critique institutionnelle" class="py-24 sm:py-32 bg-[#F3F1EC] border-y border-hairline relative select-none">
+  <div class="max-w-[1200px] mx-auto px-6 sm:px-10 text-center">
+    
+    <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] block mb-8 font-bold">
+      REGARD CRITIQUE
+    </span>
+
+    <blockquote class="space-y-8">
+      <p id="manifesto-quote" class="font-serif-display italic text-2xl sm:text-4xl lg:text-5xl leading-[1.35] font-normal tracking-tight max-w-4xl mx-auto flex flex-wrap justify-center gap-x-[0.25em] gap-y-[0.1em]">
+        <span class="manifesto-word transition-all duration-300 opacity-25 text-[#9C9991]">«</span>
+        {words.map((word) => (
+          <span class="manifesto-word transition-all duration-300 opacity-25 text-[#9C9991] inline-block">{word}</span>
+        ))}
+        <span class="manifesto-word transition-all duration-300 opacity-25 text-[#9C9991]">»</span>
+      </p>
+      
+      <footer class="pt-6 border-t border-[#141413]/10 inline-block">
+        <cite class="not-italic flex flex-col items-center gap-1">
+          <span class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-[#141413]">
+            {author}
+          </span>
+          <span class="text-[10px] font-mono tracking-[0.18em] text-[#666460]">
+            {role}
+          </span>
+        </cite>
+      </footer>
+    </blockquote>
+
+  </div>
+</section>
+
+<script>
+  function initManifestoScrollAnimation() {
+    const quoteElement = document.getElementById('manifesto-quote');
+    const words = document.querySelectorAll('.manifesto-word');
+    if (!quoteElement || !words.length) return;
+
+    function handleScroll() {
+      const rect = quoteElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Calculate scroll progress directly based on the quote text's position
+      // Starts when quote reaches 75% of viewport height, finishes when it reaches 35%
+      const start = windowHeight * 0.75;
+      const end = windowHeight * 0.35;
+      const totalRange = start - end;
+      
+      const currentPos = start - rect.top;
+      const progress = Math.max(0, Math.min(1, currentPos / totalRange));
+      
+      const totalWords = words.length;
+      words.forEach((word, index) => {
+        const threshold = index / totalWords;
+        if (progress >= threshold) {
+          word.classList.remove('opacity-25', 'text-[#9C9991]');
+          word.classList.add('opacity-100', 'text-[#141413]');
+        } else {
+          word.classList.remove('opacity-100', 'text-[#141413]');
+          word.classList.add('opacity-25', 'text-[#9C9991]');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initManifestoScrollAnimation);
+  } else {
+    initManifestoScrollAnimation();
+  }
+</script>

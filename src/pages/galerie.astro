@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArtworkGrid from '../components/ArtworkGrid.astro';
+import { ShieldCheck, ArrowUpRight } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Catalogue des Œuvres — Galerie & Collection"
+  description="Consultez l'ensemble des toiles de COSMOS. Action Painting, Street Art & Dripping sur toiles grand format. Disponibilités et fiches techniques d'atelier."
+  currentPath="/galerie"
+>
+  <!-- Gallery Page Header -->
+  <header class="py-16 sm:py-24 bg-[#F3F1EC] border-b border-hairline relative">
+    <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div class="max-w-4xl space-y-4">
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#8C7A5E] block font-bold">
+          CATALOGUE RAISONNÉ — ÉDITION 2026
+        </span>
+        <h1 class="font-serif-display text-5xl sm:text-7xl lg:text-8xl text-[#141413] font-bold tracking-tight leading-[0.85]">
+          Galerie des Œuvres
+        </h1>
+        <p class="text-base text-[#666460] font-light leading-relaxed max-w-2xl pt-2">
+          Chaque toile constitue une pièce unique d'Action Painting et de typographie urbaine, signée par l'artiste et livrée avec son certificat d'authenticité.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Complete 10 Artwork Interactive Grid -->
+  <ArtworkGrid
+    limit={10}
+    showFilters={true}
+    title="Corpus Pictural complet"
+    subtitle="DISPONIBILITÉS EN TEMPS RÉEL & VUE ATELIER"
+  />
+
+  <!-- Collector & Gallery Service Section -->
+  <section aria-label="Service d'acquisition" class="py-20 bg-[#F3F1EC] border-t border-hairline">
+    <div class="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      
+      <div class="space-y-2 max-w-2xl">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#8C7A5E] font-bold">
+          <ShieldCheck class="w-4 h-4" aria-hidden="true" />
+          <span>EXPÉDITION SÉCURISÉE & ACCESSOIRES D'ATELIER</span>
+        </div>
+        <h2 class="font-serif-display text-3xl sm:text-4xl text-[#141413] font-bold">
+          Renseignements sur une pièce du catalogue ?
+        </h2>
+        <p class="text-xs text-[#666460] font-light">
+          Consultez les disponibilités en temps réel, organisez une présentation privée à l'atelier ou obtenez le dossier technique complet.
+        </p>
+      </div>
+
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-[#141413] text-[#F9F8F5] text-xs font-mono uppercase tracking-[0.2em] font-bold hover:bg-[#8C7A5E] transition-colors shrink-0"
+      >
+        <span>Demander les Fiches Techniques</span>
+        <ArrowUpRight class="w-4 h-4" aria-hidden="true" />
+      </a>
+
+    </div>
+  </section>
+</BaseLayout>

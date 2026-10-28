@@ -96,13 +96,20 @@ const featuredArtworks = [
       </div>
     ))}
 
-    <!-- 2. Mouse Spotlight (Subtle Museum Lighting Glow) -->
-    <div id="hero-spotlight" class="absolute inset-0 z-10 pointer-events-none opacity-0 transition-opacity duration-700" />
+    <!-- 2. Architectural Ghost H1 (Option 1: Monumental en Transparence Fused into Canvas) -->
+    <div class="absolute inset-0 z-12 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+      <h1 class="font-serif-display text-[22vw] font-bold tracking-[-0.04em] leading-none text-white/6 mix-blend-overlay">
+        COSMOS
+      </h1>
+    </div>
 
-    <!-- 3. Minimal Ambient Gradient (Strictly at the lower edge for text legibility, 90%+ canvas stays untouched) -->
+    <!-- 3. Mouse Spotlight (Subtle Museum Lighting Glow) -->
+    <div id="hero-spotlight" class="absolute inset-0 z-13 pointer-events-none opacity-0 transition-opacity duration-700" />
+
+    <!-- 4. Minimal Ambient Gradient (Strictly at the lower edge for text legibility, 90%+ canvas stays untouched) -->
     <div class="absolute inset-x-0 bottom-0 h-40 z-15 bg-gradient-to-t from-black/75 via-black/30 to-transparent pointer-events-none" />
 
-    <!-- 4. Pure Minimalist Floating Baseline (No cards, no backgrounds, zero UI clutter) -->
+    <!-- 5. Pure Minimalist Floating Baseline (No cards, no backgrounds, zero UI clutter) -->
     <div class="relative z-30 h-full max-w-[1600px] mx-auto px-6 sm:px-12 pb-8 sm:pb-12 flex flex-col justify-end pointer-events-none">
       
       <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 w-full">
@@ -115,9 +122,9 @@ const featuredArtworks = [
             <span id="cartel-status" class="text-white/80">Disponible</span>
           </div>
 
-          <h1 id="cartel-title" class="font-serif-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-none">
+          <h2 id="cartel-title" class="font-serif-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-none">
             The Wall
-          </h1>
+          </h2>
 
           <p id="cartel-specs" class="text-xs sm:text-sm font-mono text-white/75 pt-1">
             2024 · 120 × 100 cm · Technique mixte, spray aérosol & typographies sur lin

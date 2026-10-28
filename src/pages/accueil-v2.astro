@@ -64,19 +64,19 @@ const featuredArtworks = [
 ---
 
 <BaseLayout
-  title="Accueil V2 — Immersion Picturale Plein Écran"
+  title="Accueil V2 — Monographie & Immersion Plein Écran"
   description="Expérience d'immersion totale plein écran dans l'univers pictural de COSMOS. Action Painting & Street Art contemporain."
   currentPath="/accueil-v2"
 >
 
   <!-- ═══════════════════════════════════════════════════════════════
-       HERO SECTION — 100% PURE ARTWORK IMMERSION (NO CARDS, NO BOXES)
+       HERO SECTION — DIRECTION 1: LA MONOGRAPHIE HAUTE-COUTURE
        ═══════════════════════════════════════════════════════════════ -->
   <section
     id="hero-v2"
-    class="relative h-[100dvh] min-h-[580px] w-full overflow-hidden select-none bg-[#0a0a09]"
+    class="relative h-[100dvh] min-h-[600px] w-full overflow-hidden select-none bg-[#0a0a09]"
   >
-    <!-- 1. Full-Bleed Artwork Canvases (100% of the screen) -->
+    <!-- 1. Full-Bleed Artwork Canvases (100% of the screen, clean & luminous) -->
     {featuredArtworks.map((art, idx) => (
       <div
         class={`hero-canvas-layer absolute inset-0 transition-opacity duration-1000 ease-[cubic-bezier(0.32,0.72,0,1)] ${
@@ -96,84 +96,94 @@ const featuredArtworks = [
       </div>
     ))}
 
-    <!-- 2. Architectural Monumental H1 (Option 1: Calibrated Legible Transparence) -->
-    <div class="absolute inset-0 z-12 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-      <h1 class="font-serif-display text-[20vw] sm:text-[22vw] font-bold tracking-[-0.04em] leading-none text-white/22 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-        COSMOS
-      </h1>
+    <!-- 2. Subtle Museum Lighting Glow -->
+    <div id="hero-spotlight" class="absolute inset-0 z-10 pointer-events-none opacity-0 transition-opacity duration-700" />
+
+    <!-- 3. Minimal Ambient Vignette (Top fade behind transparent navbar & bottom fade for reel) -->
+    <div class="absolute inset-x-0 top-0 h-32 z-15 bg-gradient-to-b from-[#0a0a09]/60 via-[#0a0a09]/15 to-transparent pointer-events-none" />
+    <div class="absolute inset-x-0 bottom-0 h-44 z-15 bg-gradient-to-t from-[#0a0a09]/85 via-[#0a0a09]/40 to-transparent pointer-events-none" />
+
+    <!-- 4. Top-Left Artist Signature H1 (Haute-Couture Monograph Stamp) -->
+    <div class="absolute top-24 sm:top-28 left-6 sm:left-12 lg:left-16 z-25 pointer-events-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+      <div class="space-y-0.5">
+        <h1 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-none">
+          COSMOS
+        </h1>
+        <p class="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.28em] text-[#C4B59D]">
+          Action Painting · Art Urbain Contemporain
+        </p>
+      </div>
     </div>
 
-    <!-- 3. Mouse Spotlight (Subtle Museum Lighting Glow) -->
-    <div id="hero-spotlight" class="absolute inset-0 z-13 pointer-events-none opacity-0 transition-opacity duration-700" />
-
-    <!-- 4. Minimal Ambient Gradient (Strictly at the lower edge for text legibility, 90%+ canvas stays untouched) -->
-    <div class="absolute inset-x-0 bottom-0 h-40 z-15 bg-gradient-to-t from-black/75 via-black/30 to-transparent pointer-events-none" />
-
-    <!-- 5. Pure Minimalist Floating Baseline (No cards, no backgrounds, zero UI clutter) -->
-    <div class="relative z-30 h-full max-w-[1600px] mx-auto px-6 sm:px-12 pb-8 sm:pb-12 flex flex-col justify-end pointer-events-none">
+    <!-- 5. Bottom Horizontal Curatorial Baseline (Continuous Haute-Couture Reel) -->
+    <div id="hero-bottom-bar" class="relative z-30 h-full max-w-[1600px] mx-auto px-6 sm:px-12 pb-7 sm:pb-9 flex flex-col justify-end pointer-events-none">
       
-      <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 w-full">
+      <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 w-full pt-4 border-t border-white/15">
 
-        <!-- Left: Pure Floating Typographic Cartel -->
-        <div class="pointer-events-auto max-w-xl space-y-1 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-          <div class="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.22em] text-[#C4B59D]">
+        <!-- Left: Current Artwork Meta & Title -->
+        <div class="pointer-events-auto space-y-0.5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] shrink-0">
+          <div class="flex items-center gap-2.5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#C4B59D]">
             <span id="cartel-meta">FIG. 01 / 05</span>
             <span class="text-white/30">·</span>
             <span id="cartel-status" class="text-white/80">Disponible</span>
           </div>
-
-          <h2 id="cartel-title" class="font-serif-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-none">
+          <h2 id="cartel-title" class="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none">
             The Wall
           </h2>
-
-          <p id="cartel-specs" class="text-xs sm:text-sm font-mono text-white/75 pt-1">
-            2024 · 120 × 100 cm · Technique mixte, spray aérosol & typographies sur lin
+          <p id="cartel-specs" class="text-[11px] sm:text-xs font-mono text-white/70 pt-0.5">
+            2024 · 120 × 100 cm · Technique mixte sur lin
           </p>
-
-          <div class="pt-2 flex items-center gap-6">
-            <a
-              id="cartel-link"
-              href="/contact?oeuvre=The%20Wall"
-              class="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.2em] text-[#F9F8F5] hover:text-[#C4B59D] border-b border-white/50 hover:border-[#C4B59D] pb-0.5 transition-colors font-medium"
-            >
-              <span>Se renseigner sur l'œuvre</span>
-              <ArrowUpRight class="w-3.5 h-3.5" />
-            </a>
-
-            <a
-              href="/galerie"
-              class="text-xs font-mono uppercase tracking-[0.2em] text-white/60 hover:text-white border-b border-white/20 hover:border-white pb-0.5 transition-colors hidden sm:inline-block"
-            >
-              Voir la galerie
-            </a>
-          </div>
         </div>
 
-        <!-- Right: Pure Minimalist Navigation (Arrows & Counter, zero boxes) -->
-        <div class="pointer-events-auto flex items-center gap-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-          <button
-            id="btn-prev-art"
-            type="button"
-            aria-label="Œuvre précédente"
-            class="p-2 text-white/70 hover:text-white transition-colors cursor-pointer"
-          >
-            <ChevronLeft class="w-6 h-6" />
-          </button>
+        <!-- Center: Interactive Haute-Couture Artwork Selector Reel -->
+        <div class="pointer-events-auto flex items-center gap-1 sm:gap-2 overflow-x-auto max-w-full pb-1 scrollbar-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+          {featuredArtworks.map((art, idx) => (
+            <button
+              type="button"
+              class={`curatorial-reel-btn group px-3 py-1.5 text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer rounded-full shrink-0 flex items-center gap-2 ${
+                idx === 0
+                  ? 'text-[#C4B59D] font-bold bg-white/10 border border-[#C4B59D]/40'
+                  : 'text-white/50 hover:text-white hover:bg-white/5 border border-transparent'
+              }`}
+              data-reel-index={idx}
+              aria-label={`Afficher ${art.title}`}
+            >
+              <span class="text-[9px] text-[#C4B59D]/70">{art.fig}</span>
+              <span>{art.title}</span>
+            </button>
+          ))}
+        </div>
 
-          <div class="flex items-center gap-1.5 font-mono text-xs tracking-widest text-white/80">
-            <span id="counter-current" class="font-bold text-[#C4B59D]">01</span>
-            <span class="text-white/30">/</span>
-            <span class="text-white/60">05</span>
+        <!-- Right: Inquire Action & Arrows -->
+        <div class="pointer-events-auto flex items-center gap-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] shrink-0">
+          <a
+            id="cartel-link"
+            href="/contact?oeuvre=The%20Wall"
+            class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-[#F9F8F5] hover:text-[#C4B59D] border-b border-white/40 hover:border-[#C4B59D] pb-1 transition-all font-semibold"
+          >
+            <span>Demande d'acquisition</span>
+            <ArrowUpRight class="w-3.5 h-3.5" />
+          </a>
+
+          <!-- Subtle Prev / Next Arrows -->
+          <div class="flex items-center gap-1 border-l border-white/20 pl-4">
+            <button
+              id="btn-prev-art"
+              type="button"
+              aria-label="Œuvre précédente"
+              class="p-1.5 text-white/60 hover:text-white transition-colors cursor-pointer"
+            >
+              <ChevronLeft class="w-5 h-5" />
+            </button>
+            <button
+              id="btn-next-art"
+              type="button"
+              aria-label="Œuvre suivante"
+              class="p-1.5 text-white/60 hover:text-white transition-colors cursor-pointer"
+            >
+              <ChevronRight class="w-5 h-5" />
+            </button>
           </div>
-
-          <button
-            id="btn-next-art"
-            type="button"
-            aria-label="Œuvre suivante"
-            class="p-2 text-white/70 hover:text-white transition-colors cursor-pointer"
-          >
-            <ChevronRight class="w-6 h-6" />
-          </button>
         </div>
 
       </div>
@@ -266,17 +276,18 @@ const featuredArtworks = [
   let autoplayTimer = null;
 
   const canvasLayers = document.querySelectorAll('.hero-canvas-layer');
+  const reelBtns = document.querySelectorAll('.curatorial-reel-btn');
 
   const cartelMeta = document.getElementById('cartel-meta');
   const cartelStatus = document.getElementById('cartel-status');
   const cartelTitle = document.getElementById('cartel-title');
   const cartelSpecs = document.getElementById('cartel-specs');
   const cartelLink = document.getElementById('cartel-link');
-  const counterCurrent = document.getElementById('counter-current');
 
   const btnPrev = document.getElementById('btn-prev-art');
   const btnNext = document.getElementById('btn-next-art');
   const heroSection = document.getElementById('hero-v2');
+  const heroBottomBar = document.getElementById('hero-bottom-bar');
 
   function updateArtwork(index) {
     if (index < 0) index = totalArtworks - 1;
@@ -296,7 +307,18 @@ const featuredArtworks = [
       }
     });
 
-    // 2. Update pure typography cartel
+    // 2. Update reel active pill styling
+    reelBtns.forEach((btn, i) => {
+      if (i === activeIndex) {
+        btn.classList.add('text-[#C4B59D]', 'font-bold', 'bg-white/10', 'border-[#C4B59D]/40');
+        btn.classList.remove('text-white/50', 'border-transparent');
+      } else {
+        btn.classList.remove('text-[#C4B59D]', 'font-bold', 'bg-white/10', 'border-[#C4B59D]/40');
+        btn.classList.add('text-white/50', 'border-transparent');
+      }
+    });
+
+    // 3. Update typographic cartel
     if (cartelMeta) cartelMeta.textContent = `FIG. ${data.fig} / 05`;
     if (cartelStatus) cartelStatus.textContent = data.status;
     if (cartelTitle) {
@@ -310,8 +332,17 @@ const featuredArtworks = [
     }
     if (cartelSpecs) cartelSpecs.textContent = `${data.year} · ${data.dimensions} · ${data.medium}`;
     if (cartelLink) cartelLink.setAttribute('href', `/contact?oeuvre=${encodeURIComponent(data.title)}`);
-    if (counterCurrent) counterCurrent.textContent = data.fig;
   }
+
+  // Reel buttons click
+  reelBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.getAttribute('data-reel-index') || '0', 10);
+      updateArtwork(idx);
+      resetAutoplay();
+    });
+  });
 
   if (btnPrev) {
     btnPrev.addEventListener('click', (e) => {
@@ -352,6 +383,11 @@ const featuredArtworks = [
 
   startAutoplay();
 
+  if (heroBottomBar) {
+    heroBottomBar.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+    heroBottomBar.addEventListener('mouseleave', () => resetAutoplay());
+  }
+
   // Subtle mouse spotlight
   const spotlight = document.getElementById('hero-spotlight');
   if (heroSection && spotlight) {
@@ -365,7 +401,7 @@ const featuredArtworks = [
       const rect = heroSection.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,255,255,0.07), transparent 70%)`;
+      spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,255,255,0.06), transparent 70%)`;
     });
   }
 </script>

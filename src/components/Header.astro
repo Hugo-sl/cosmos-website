@@ -33,9 +33,11 @@ const getGalerieLabel = (): string => {
 ---
 
 <header
-  class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+  id="main-header"
+  data-page-v2={isAccueilV2 ? "true" : undefined}
+  class={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
     isDarkHeader
-      ? 'bg-transparent backdrop-blur-md border-b border-white/15 text-[#F9F8F5]'
+      ? 'bg-transparent backdrop-blur-none border-b border-transparent text-[#F9F8F5]'
       : 'bg-[#F9F8F5]/90 backdrop-blur-md border-b border-hairline text-[#141413]'
   }`}
 >
@@ -48,7 +50,7 @@ const getGalerieLabel = (): string => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 742 310"
         preserveAspectRatio="xMidYMid meet"
-        class={`h-8 sm:h-9 w-auto transition-opacity group-hover:opacity-75 ${
+        class={`header-logo h-8 sm:h-9 w-auto transition-all group-hover:opacity-75 ${
           isDarkHeader ? 'fill-[#F9F8F5]' : 'fill-[#141413]'
         }`}
       >
@@ -178,7 +180,7 @@ const getGalerieLabel = (): string => {
     <!-- Professional Inquiries Action -->
     <a
       href="/contact"
-      class={`hidden md:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] px-4 py-2 border transition-all duration-300 ${
+      class={`header-cta hidden md:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] px-4 py-2 border transition-all duration-300 ${
         isDarkHeader
           ? 'border-white/30 text-[#F9F8F5] hover:bg-[#F9F8F5] hover:text-[#141413]'
           : 'border-[#141413]/30 text-[#141413] hover:bg-[#141413] hover:text-[#F9F8F5]'
@@ -247,6 +249,36 @@ const getGalerieLabel = (): string => {
   </div>
 </header>
 
+<style>
+  header.header-scrolled {
+    background-color: rgba(249, 248, 245, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    border-bottom-color: rgba(20, 20, 19, 0.12) !important;
+    color: #141413 !important;
+    box-shadow: 0 4px 20px -2px rgba(20, 20, 19, 0.05);
+  }
+  header.header-scrolled .header-logo {
+    fill: #141413 !important;
+  }
+  header.header-scrolled nav a {
+    color: #666460 !important;
+  }
+  header.header-scrolled nav a:hover {
+    color: #141413 !important;
+  }
+  header.header-scrolled .header-cta {
+    border-color: rgba(20, 20, 19, 0.25) !important;
+    color: #141413 !important;
+  }
+  header.header-scrolled .header-cta:hover {
+    background-color: #141413 !important;
+    color: #F9F8F5 !important;
+  }
+  header.header-scrolled #mobile-menu-trigger {
+    color: #141413 !important;
+  }
+</style>
+
 <script>
   const trigger = document.getElementById('mobile-menu-trigger');
   const menu = document.getElementById('mobile-menu');
@@ -261,5 +293,19 @@ const getGalerieLabel = (): string => {
       iconOpen.classList.toggle('hidden');
       iconClose.classList.toggle('hidden');
     });
+  }
+
+  // V2 Dynamic Transparent-to-Scrolled Navbar Handler
+  const mainHeader = document.getElementById('main-header');
+  if (mainHeader && mainHeader.getAttribute('data-page-v2') === 'true') {
+    const onScroll = () => {
+      if (window.scrollY > 60) {
+        mainHeader.classList.add('header-scrolled');
+      } else {
+        mainHeader.classList.remove('header-scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 </script>

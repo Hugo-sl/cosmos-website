@@ -104,38 +104,44 @@ const featuredArtworks = [
     <div class="absolute inset-x-0 top-0 h-24 sm:h-28 z-15 bg-gradient-to-b from-[#F9F8F5]/90 via-[#F9F8F5]/50 to-transparent pointer-events-none" />
 
     <!-- Bottom-up paper gradient for curatorial bar, merging into the next section -->
-    <div class="absolute inset-x-0 bottom-0 h-44 sm:h-52 z-15 bg-gradient-to-t from-[#F9F8F5] via-[#F9F8F5]/80 via-40% via-[#F9F8F5]/25 via-75% to-transparent pointer-events-none" />
+    <div class="absolute inset-x-0 bottom-0 h-56 sm:h-52 lg:h-48 z-15 bg-gradient-to-t from-[#F9F8F5] via-[#F9F8F5]/85 via-45% via-[#F9F8F5]/30 via-75% to-transparent pointer-events-none" />
 
-    <!-- 4. Top-Left Artist Signature H1 (Museum Monograph Stamp with Crisp Typographic Halo) -->
-    <div class="absolute top-24 sm:top-28 left-6 sm:left-12 lg:left-16 z-25 pointer-events-auto">
-      <div class="space-y-1">
-        <h1 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#141413] leading-none [text-shadow:_0_0_8px_#F9F8F5,_0_0_16px_#F9F8F5,_0_0_24px_rgba(249,248,245,0.95),_0_2px_4px_#F9F8F5]">
-          COSMOS
-        </h1>
-        <p class="text-[9px] sm:text-[10.5px] font-mono uppercase tracking-[0.28em] text-[#8C7A5E] font-bold [text-shadow:_0_0_6px_#F9F8F5,_0_0_12px_#F9F8F5,_0_0_18px_rgba(249,248,245,0.95),_0_1px_3px_#F9F8F5]">
-          Action Painting · Art Urbain Contemporain
-        </p>
-      </div>
-    </div>
-
-    <!-- 5. Bottom Horizontal Curatorial Baseline (Continuous Haute-Couture Reel in Museum Paper Theme) -->
+    <!-- 4. Bottom Horizontal Curatorial Baseline (Continuous Haute-Couture Reel in Museum Paper Theme) -->
     <div id="hero-bottom-bar" class="relative z-30 h-full max-w-[1600px] mx-auto px-6 sm:px-12 pb-7 sm:pb-9 flex flex-col justify-end pointer-events-none">
       
-      <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 w-full pt-4 border-t border-[#141413]/15">
+      <div class="flex flex-col xl:flex-row items-start xl:items-end justify-between gap-6 w-full pt-4 border-t border-[#141413]/15">
 
-        <!-- Left: Current Artwork Meta & Title -->
-        <div class="pointer-events-auto space-y-1 shrink-0">
-          <div class="flex items-center gap-2.5 text-[11px] font-mono uppercase tracking-[0.22em] text-[#8C7A5E] font-bold">
-            <span id="cartel-meta">FIG. 01 / 05</span>
-            <span class="text-[#141413]/30">·</span>
-            <span id="cartel-status" class="px-2.5 py-0.5 rounded-full bg-[#F9F8F5]/90 border border-[#141413]/20 text-[#141413] text-[10px] tracking-widest backdrop-blur-md font-semibold shadow-sm">Disponible</span>
+        <!-- Left: Artist Identity (H1) + Curatorial Cartel (Diptych) -->
+        <div class="pointer-events-auto flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 shrink-0">
+          
+          <!-- Bloc 1: Artist Monograph Signature (H1) -->
+          <div class="space-y-0.5">
+            <h1 class="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#141413] leading-none">
+              COSMOS
+            </h1>
+            <p class="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C7A5E] font-bold">
+              Action Painting · Art Urbain Contemporain
+            </p>
           </div>
-          <h2 id="cartel-title" class="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#141413] leading-none [text-shadow:_0_1px_12px_rgba(249,248,245,0.9)]">
-            The Wall
-          </h2>
-          <p id="cartel-specs" class="text-xs sm:text-[13px] font-mono text-[#666460] pt-0.5">
-            2024 · 120 × 100 cm · Technique mixte sur lin
-          </p>
+
+          <!-- Vertical Hairline Divider -->
+          <div class="hidden sm:block w-px h-9 sm:h-10 bg-[#141413]/15 self-center shrink-0" aria-hidden="true" />
+
+          <!-- Bloc 2: Current Artwork Cartel -->
+          <div class="space-y-0.5 sm:space-y-1 border-t sm:border-t-0 border-[#141413]/10 pt-2 sm:pt-0">
+            <div class="flex items-center gap-2 text-[10.5px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#8C7A5E] font-bold">
+              <span id="cartel-meta">FIG. 01 / 05</span>
+              <span class="text-[#141413]/30">·</span>
+              <span id="cartel-status" class="px-2.5 py-0.5 rounded-full bg-[#F9F8F5]/90 border border-[#141413]/20 text-[#141413] text-[9.5px] tracking-widest backdrop-blur-md font-semibold shadow-sm">Disponible</span>
+            </div>
+            <h2 id="cartel-title" class="font-serif-display text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[#141413] leading-none transition-all duration-200">
+              The Wall
+            </h2>
+            <p id="cartel-specs" class="text-[11px] sm:text-xs font-mono text-[#666460]">
+              2024 · 120 × 100 cm · Technique mixte sur lin
+            </p>
+          </div>
+
         </div>
 
         <!-- Center: Interactive Haute-Couture Artwork Selector Reel -->

@@ -142,48 +142,54 @@ const featuredArtworks = [
 
         </div>
 
-        <!-- Right: Unified Compact Stepper (Prev + 01..05 + Next, No scroll required) -->
-        <div class="pointer-events-auto flex items-center shrink-0">
-          <div class="flex items-center gap-1 p-1 rounded-full bg-[#F9F8F5]/90 border border-[#141413]/15 backdrop-blur-md shadow-sm">
-            <button
-              id="btn-prev-art"
-              type="button"
-              aria-label="Œuvre précédente"
-              class="w-8 h-8 rounded-full flex items-center justify-center text-[#141413]/70 hover:text-[#141413] hover:bg-[#141413]/5 transition-colors cursor-pointer"
-            >
-              <ChevronLeft class="w-4 h-4" />
-            </button>
+        <!-- Right: Pure Typographic Stepper (Zero container, bare editorial harmony) -->
+        <div class="pointer-events-auto flex items-center gap-4 sm:gap-6 self-start md:self-end pt-3 md:pt-0 shrink-0">
+          
+          <!-- Prev Arrow -->
+          <button
+            id="btn-prev-art"
+            type="button"
+            aria-label="Œuvre précédente"
+            class="group p-1 text-[#141413]/40 hover:text-[#141413] transition-colors cursor-pointer"
+          >
+            <ChevronLeft class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
+          </button>
 
-            <div class="w-px h-4 bg-[#141413]/15 mx-0.5" aria-hidden="true" />
-
-            <div class="flex items-center gap-1">
-              {featuredArtworks.map((art, idx) => (
-                <button
-                  type="button"
-                  class={`curatorial-reel-btn w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-mono font-bold transition-all duration-300 cursor-pointer ${
-                    idx === 0
-                      ? 'bg-[#141413] text-[#F9F8F5] shadow-sm'
-                      : 'text-[#141413]/60 hover:text-[#141413] hover:bg-[#141413]/5'
+          <!-- Numbered Editorial Steppers -->
+          <div class="flex items-center gap-3 sm:gap-4">
+            {featuredArtworks.map((art, idx) => (
+              <button
+                type="button"
+                class={`curatorial-reel-btn group relative py-1 text-xs sm:text-[13px] font-mono tracking-widest transition-all duration-300 cursor-pointer ${
+                  idx === 0
+                    ? 'text-[#141413] font-bold'
+                    : 'text-[#141413]/35 hover:text-[#141413] font-normal'
+                }`}
+                data-reel-index={idx}
+                aria-label={`Afficher l'œuvre ${art.fig} : ${art.title}`}
+              >
+                <span>{art.fig}</span>
+                <!-- Active Underline Hairline Indicator -->
+                <span
+                  class={`stepper-line absolute -bottom-0.5 inset-x-0 h-0.5 transition-all duration-300 ${
+                    idx === 0 ? 'bg-[#8C7A5E] opacity-100 scale-x-100' : 'bg-[#8C7A5E] opacity-0 scale-x-0 group-hover:opacity-40 group-hover:scale-x-75'
                   }`}
-                  data-reel-index={idx}
-                  aria-label={`Afficher l'œuvre ${art.fig} : ${art.title}`}
-                >
-                  <span>{art.fig}</span>
-                </button>
-              ))}
-            </div>
-
-            <div class="w-px h-4 bg-[#141413]/15 mx-0.5" aria-hidden="true" />
-
-            <button
-              id="btn-next-art"
-              type="button"
-              aria-label="Œuvre suivante"
-              class="w-8 h-8 rounded-full flex items-center justify-center text-[#141413]/70 hover:text-[#141413] hover:bg-[#141413]/5 transition-colors cursor-pointer"
-            >
-              <ChevronRight class="w-4 h-4" />
-            </button>
+                  aria-hidden="true"
+                />
+              </button>
+            ))}
           </div>
+
+          <!-- Next Arrow -->
+          <button
+            id="btn-next-art"
+            type="button"
+            aria-label="Œuvre suivante"
+            class="group p-1 text-[#141413]/40 hover:text-[#141413] transition-colors cursor-pointer"
+          >
+            <ChevronRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </button>
+
         </div>
 
       </div>
@@ -307,12 +313,21 @@ const featuredArtworks = [
 
     // 2. Update reel active button styling
     reelBtns.forEach((btn, i) => {
+      const line = btn.querySelector('.stepper-line');
       if (i === activeIndex) {
-        btn.classList.add('bg-[#141413]', 'text-[#F9F8F5]', 'shadow-sm');
-        btn.classList.remove('text-[#141413]/60');
+        btn.classList.add('text-[#141413]', 'font-bold');
+        btn.classList.remove('text-[#141413]/35', 'font-normal');
+        if (line) {
+          line.classList.add('opacity-100', 'scale-x-100');
+          line.classList.remove('opacity-0', 'scale-x-0');
+        }
       } else {
-        btn.classList.remove('bg-[#141413]', 'text-[#F9F8F5]', 'shadow-sm');
-        btn.classList.add('text-[#141413]/60');
+        btn.classList.remove('text-[#141413]', 'font-bold');
+        btn.classList.add('text-[#141413]/35', 'font-normal');
+        if (line) {
+          line.classList.remove('opacity-100', 'scale-x-100');
+          line.classList.add('opacity-0', 'scale-x-0');
+        }
       }
     });
 

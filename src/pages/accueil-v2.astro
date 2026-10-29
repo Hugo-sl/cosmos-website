@@ -130,7 +130,7 @@ const featuredArtworks = [
           <!-- Bloc 2: Current Artwork Cartel -->
           <div class="space-y-0.5 sm:space-y-1 border-t sm:border-t-0 border-[#141413]/10 pt-2 sm:pt-0">
             <span id="cartel-meta" class="block text-[10.5px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#8C7A5E] font-bold">
-              FIG. 01 / 05
+              01 / 05
             </span>
             <h2 id="cartel-title" class="font-serif-display text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[#141413] leading-none transition-all duration-200">
               The Wall
@@ -142,42 +142,44 @@ const featuredArtworks = [
 
         </div>
 
-        <!-- Center: Interactive Haute-Couture Artwork Selector Reel -->
-        <div class="pointer-events-auto flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto max-w-full pb-1 scrollbar-none">
-          {featuredArtworks.map((art, idx) => (
-            <button
-              type="button"
-              class={`curatorial-reel-btn group px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer rounded-full shrink-0 flex items-center gap-2 backdrop-blur-md shadow-sm ${
-                idx === 0
-                  ? 'bg-[#141413] text-[#F9F8F5] font-bold border border-[#141413] shadow-[0_2px_12px_rgba(20,20,19,0.2)]'
-                  : 'bg-[#F9F8F5]/85 text-[#141413]/70 hover:text-[#141413] hover:bg-[#F9F8F5] border border-[#141413]/15 hover:border-[#141413]/35'
-              }`}
-              data-reel-index={idx}
-              aria-label={`Afficher ${art.title}`}
-            >
-              <span class={`text-[9px] font-bold ${idx === 0 ? 'text-[#C4B59D]' : 'text-[#8C7A5E]'}`}>{art.fig}</span>
-              <span>{art.title}</span>
-            </button>
-          ))}
-        </div>
-
-        <!-- Right: Navigation Arrows -->
+        <!-- Right: Unified Compact Stepper (Prev + 01..05 + Next, No scroll required) -->
         <div class="pointer-events-auto flex items-center shrink-0">
-          <!-- Subtle Prev / Next Arrows -->
-          <div class="flex items-center gap-0.5 bg-[#F9F8F5]/90 border border-[#141413]/15 rounded-full p-1 backdrop-blur-md shadow-sm">
+          <div class="flex items-center gap-1 p-1 rounded-full bg-[#F9F8F5]/90 border border-[#141413]/15 backdrop-blur-md shadow-sm">
             <button
               id="btn-prev-art"
               type="button"
               aria-label="Œuvre précédente"
-              class="p-1.5 text-[#141413]/70 hover:text-[#141413] hover:bg-[#141413]/5 rounded-full transition-colors cursor-pointer"
+              class="w-8 h-8 rounded-full flex items-center justify-center text-[#141413]/70 hover:text-[#141413] hover:bg-[#141413]/5 transition-colors cursor-pointer"
             >
               <ChevronLeft class="w-4 h-4" />
             </button>
+
+            <div class="w-px h-4 bg-[#141413]/15 mx-0.5" aria-hidden="true" />
+
+            <div class="flex items-center gap-1">
+              {featuredArtworks.map((art, idx) => (
+                <button
+                  type="button"
+                  class={`curatorial-reel-btn w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-mono font-bold transition-all duration-300 cursor-pointer ${
+                    idx === 0
+                      ? 'bg-[#141413] text-[#F9F8F5] shadow-sm'
+                      : 'text-[#141413]/60 hover:text-[#141413] hover:bg-[#141413]/5'
+                  }`}
+                  data-reel-index={idx}
+                  aria-label={`Afficher l'œuvre ${art.fig} : ${art.title}`}
+                >
+                  <span>{art.fig}</span>
+                </button>
+              ))}
+            </div>
+
+            <div class="w-px h-4 bg-[#141413]/15 mx-0.5" aria-hidden="true" />
+
             <button
               id="btn-next-art"
               type="button"
               aria-label="Œuvre suivante"
-              class="p-1.5 text-[#141413]/70 hover:text-[#141413] hover:bg-[#141413]/5 rounded-full transition-colors cursor-pointer"
+              class="w-8 h-8 rounded-full flex items-center justify-center text-[#141413]/70 hover:text-[#141413] hover:bg-[#141413]/5 transition-colors cursor-pointer"
             >
               <ChevronRight class="w-4 h-4" />
             </button>
@@ -303,28 +305,19 @@ const featuredArtworks = [
       }
     });
 
-    // 2. Update reel active pill styling
+    // 2. Update reel active button styling
     reelBtns.forEach((btn, i) => {
-      const figSpan = btn.querySelector('span:first-child');
       if (i === activeIndex) {
-        btn.classList.add('bg-[#141413]', 'text-[#F9F8F5]', 'font-bold', 'border-[#141413]', 'shadow-[0_2px_12px_rgba(20,20,19,0.2)]');
-        btn.classList.remove('bg-[#F9F8F5]/85', 'text-[#141413]/70', 'border-[#141413]/15');
-        if (figSpan) {
-          figSpan.classList.add('text-[#C4B59D]');
-          figSpan.classList.remove('text-[#8C7A5E]');
-        }
+        btn.classList.add('bg-[#141413]', 'text-[#F9F8F5]', 'shadow-sm');
+        btn.classList.remove('text-[#141413]/60');
       } else {
-        btn.classList.remove('bg-[#141413]', 'text-[#F9F8F5]', 'font-bold', 'border-[#141413]', 'shadow-[0_2px_12px_rgba(20,20,19,0.2)]');
-        btn.classList.add('bg-[#F9F8F5]/85', 'text-[#141413]/70', 'border-[#141413]/15');
-        if (figSpan) {
-          figSpan.classList.remove('text-[#C4B59D]');
-          figSpan.classList.add('text-[#8C7A5E]');
-        }
+        btn.classList.remove('bg-[#141413]', 'text-[#F9F8F5]', 'shadow-sm');
+        btn.classList.add('text-[#141413]/60');
       }
     });
 
     // 3. Update typographic cartel
-    if (cartelMeta) cartelMeta.textContent = `FIG. ${data.fig} / 05`;
+    if (cartelMeta) cartelMeta.textContent = `${data.fig} / 05`;
     if (cartelTitle) {
       cartelTitle.style.opacity = '0';
       cartelTitle.style.transform = 'translateY(4px)';

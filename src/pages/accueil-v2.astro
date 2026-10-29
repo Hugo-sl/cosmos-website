@@ -129,11 +129,9 @@ const featuredArtworks = [
 
           <!-- Bloc 2: Current Artwork Cartel -->
           <div class="space-y-0.5 sm:space-y-1 border-t sm:border-t-0 border-[#141413]/10 pt-2 sm:pt-0">
-            <div class="flex items-center gap-2 text-[10.5px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#8C7A5E] font-bold">
-              <span id="cartel-meta">FIG. 01 / 05</span>
-              <span class="text-[#141413]/30">·</span>
-              <span id="cartel-status" class="px-2.5 py-0.5 rounded-full bg-[#F9F8F5]/90 border border-[#141413]/20 text-[#141413] text-[9.5px] tracking-widest backdrop-blur-md font-semibold shadow-sm">Disponible</span>
-            </div>
+            <span id="cartel-meta" class="block text-[10.5px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#8C7A5E] font-bold">
+              FIG. 01 / 05
+            </span>
             <h2 id="cartel-title" class="font-serif-display text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[#141413] leading-none transition-all duration-200">
               The Wall
             </h2>
@@ -163,17 +161,8 @@ const featuredArtworks = [
           ))}
         </div>
 
-        <!-- Right: Inquire Action & Arrows -->
-        <div class="pointer-events-auto flex items-center gap-4 shrink-0">
-          <a
-            id="cartel-link"
-            href="/contact?oeuvre=The%20Wall"
-            class="group inline-flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] px-4.5 py-2 rounded-full bg-[#141413] hover:bg-[#8C7A5E] border border-[#141413] hover:border-[#8C7A5E] text-[#F9F8F5] font-semibold transition-all duration-300 shadow-[0_2px_10px_rgba(20,20,19,0.15)]"
-          >
-            <span>Demande d'acquisition</span>
-            <ArrowUpRight class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-
+        <!-- Right: Navigation Arrows -->
+        <div class="pointer-events-auto flex items-center shrink-0">
           <!-- Subtle Prev / Next Arrows -->
           <div class="flex items-center gap-0.5 bg-[#F9F8F5]/90 border border-[#141413]/15 rounded-full p-1 backdrop-blur-md shadow-sm">
             <button
@@ -288,10 +277,8 @@ const featuredArtworks = [
   const reelBtns = document.querySelectorAll('.curatorial-reel-btn');
 
   const cartelMeta = document.getElementById('cartel-meta');
-  const cartelStatus = document.getElementById('cartel-status');
   const cartelTitle = document.getElementById('cartel-title');
   const cartelSpecs = document.getElementById('cartel-specs');
-  const cartelLink = document.getElementById('cartel-link');
 
   const btnPrev = document.getElementById('btn-prev-art');
   const btnNext = document.getElementById('btn-next-art');
@@ -338,7 +325,6 @@ const featuredArtworks = [
 
     // 3. Update typographic cartel
     if (cartelMeta) cartelMeta.textContent = `FIG. ${data.fig} / 05`;
-    if (cartelStatus) cartelStatus.textContent = data.status;
     if (cartelTitle) {
       cartelTitle.style.opacity = '0';
       cartelTitle.style.transform = 'translateY(4px)';
@@ -349,7 +335,6 @@ const featuredArtworks = [
       }, 150);
     }
     if (cartelSpecs) cartelSpecs.textContent = `${data.year} · ${data.dimensions} · ${data.medium}`;
-    if (cartelLink) cartelLink.setAttribute('href', `/contact?oeuvre=${encodeURIComponent(data.title)}`);
   }
 
   // Reel buttons click

@@ -74,7 +74,7 @@ const featuredArtworks = [
        ═══════════════════════════════════════════════════════════════ -->
   <section
     id="hero-v2"
-    class="relative h-[100dvh] min-h-[600px] w-full overflow-hidden select-none bg-[#0a0a09]"
+    class="relative h-[100dvh] min-h-[600px] w-full overflow-hidden select-none bg-[#F9F8F5]"
   >
     <!-- 1. Full-Bleed Artwork Canvases (100% of the screen, clean & luminous) -->
     {featuredArtworks.map((art, idx) => (
@@ -99,41 +99,41 @@ const featuredArtworks = [
     <!-- 2. Subtle Museum Lighting Glow -->
     <div id="hero-spotlight" class="absolute inset-0 z-10 pointer-events-none opacity-0 transition-opacity duration-700" />
 
-    <!-- 3. Minimal Discreet Vignettes (Light top & bottom fades strictly preserving artwork purity & immersion) -->
-    <!-- Top-down light veil for navbar -->
-    <div class="absolute inset-x-0 top-0 h-28 sm:h-32 z-15 bg-gradient-to-b from-black/60 via-black/20 to-transparent pointer-events-none" />
+    <!-- 3. Museum Paper Vignettes (#F9F8F5 paper gradients blending seamlessly into the site) -->
+    <!-- Top-down paper gradient for header & H1 -->
+    <div class="absolute inset-x-0 top-0 h-36 sm:h-44 z-15 bg-gradient-to-b from-[#F9F8F5] via-[#F9F8F5]/65 via-45% to-transparent pointer-events-none" />
 
-    <!-- Bottom-up compact veil strictly behind the curatorial bar -->
-    <div class="absolute inset-x-0 bottom-0 h-36 sm:h-44 z-15 bg-gradient-to-t from-black/75 via-black/30 to-transparent pointer-events-none" />
+    <!-- Bottom-up paper gradient for curatorial bar, merging into the next section -->
+    <div class="absolute inset-x-0 bottom-0 h-44 sm:h-52 z-15 bg-gradient-to-t from-[#F9F8F5] via-[#F9F8F5]/80 via-40% via-[#F9F8F5]/25 via-75% to-transparent pointer-events-none" />
 
-    <!-- 4. Top-Left Artist Signature H1 (Haute-Couture Monograph Stamp with High Contrast) -->
+    <!-- 4. Top-Left Artist Signature H1 (Museum Monograph Stamp in Dark Ink) -->
     <div class="absolute top-24 sm:top-28 left-6 sm:left-12 lg:left-16 z-25 pointer-events-auto">
       <div class="space-y-0.5">
-        <h1 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-none [text-shadow:_0_2px_16px_rgba(0,0,0,0.95),_0_1px_4px_rgba(0,0,0,0.9)]">
+        <h1 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#141413] leading-none [text-shadow:_0_1px_12px_rgba(249,248,245,0.9)]">
           COSMOS
         </h1>
-        <p class="text-[9px] sm:text-[10.5px] font-mono uppercase tracking-[0.28em] text-[#E5D5BA] font-semibold [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)]">
+        <p class="text-[9px] sm:text-[10.5px] font-mono uppercase tracking-[0.28em] text-[#8C7A5E] font-bold">
           Action Painting · Art Urbain Contemporain
         </p>
       </div>
     </div>
 
-    <!-- 5. Bottom Horizontal Curatorial Baseline (Continuous Haute-Couture Reel) -->
+    <!-- 5. Bottom Horizontal Curatorial Baseline (Continuous Haute-Couture Reel in Museum Paper Theme) -->
     <div id="hero-bottom-bar" class="relative z-30 h-full max-w-[1600px] mx-auto px-6 sm:px-12 pb-7 sm:pb-9 flex flex-col justify-end pointer-events-none">
       
-      <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 w-full pt-4 border-t border-white/20">
+      <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 w-full pt-4 border-t border-[#141413]/15">
 
         <!-- Left: Current Artwork Meta & Title -->
         <div class="pointer-events-auto space-y-1 shrink-0">
-          <div class="flex items-center gap-2.5 text-[11px] font-mono uppercase tracking-[0.22em] text-[#E5D5BA] font-semibold [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
+          <div class="flex items-center gap-2.5 text-[11px] font-mono uppercase tracking-[0.22em] text-[#8C7A5E] font-bold">
             <span id="cartel-meta">FIG. 01 / 05</span>
-            <span class="text-white/40">·</span>
-            <span id="cartel-status" class="px-2.5 py-0.5 rounded-full bg-black/60 border border-white/25 text-white/90 text-[10px] tracking-widest backdrop-blur-md">Disponible</span>
+            <span class="text-[#141413]/30">·</span>
+            <span id="cartel-status" class="px-2.5 py-0.5 rounded-full bg-[#F9F8F5]/90 border border-[#141413]/20 text-[#141413] text-[10px] tracking-widest backdrop-blur-md font-semibold shadow-sm">Disponible</span>
           </div>
-          <h2 id="cartel-title" class="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none [text-shadow:_0_2px_16px_rgba(0,0,0,0.95),_0_1px_4px_rgba(0,0,0,0.9)]">
+          <h2 id="cartel-title" class="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#141413] leading-none [text-shadow:_0_1px_12px_rgba(249,248,245,0.9)]">
             The Wall
           </h2>
-          <p id="cartel-specs" class="text-xs sm:text-[13px] font-mono text-white/90 pt-0.5 [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)]">
+          <p id="cartel-specs" class="text-xs sm:text-[13px] font-mono text-[#666460] pt-0.5">
             2024 · 120 × 100 cm · Technique mixte sur lin
           </p>
         </div>
@@ -143,15 +143,15 @@ const featuredArtworks = [
           {featuredArtworks.map((art, idx) => (
             <button
               type="button"
-              class={`curatorial-reel-btn group px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer rounded-full shrink-0 flex items-center gap-2 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.5)] ${
+              class={`curatorial-reel-btn group px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer rounded-full shrink-0 flex items-center gap-2 backdrop-blur-md shadow-sm ${
                 idx === 0
-                  ? 'bg-black/85 text-[#E5D5BA] font-bold border border-[#E5D5BA]/60 shadow-[0_0_15px_rgba(229,213,186,0.25)]'
-                  : 'bg-black/55 text-white/80 hover:text-white hover:bg-black/75 border border-white/20 hover:border-white/40'
+                  ? 'bg-[#141413] text-[#F9F8F5] font-bold border border-[#141413] shadow-[0_2px_12px_rgba(20,20,19,0.2)]'
+                  : 'bg-[#F9F8F5]/85 text-[#141413]/70 hover:text-[#141413] hover:bg-[#F9F8F5] border border-[#141413]/15 hover:border-[#141413]/35'
               }`}
               data-reel-index={idx}
               aria-label={`Afficher ${art.title}`}
             >
-              <span class="text-[9px] text-[#E5D5BA] font-bold">{art.fig}</span>
+              <span class={`text-[9px] font-bold ${idx === 0 ? 'text-[#C4B59D]' : 'text-[#8C7A5E]'}`}>{art.fig}</span>
               <span>{art.title}</span>
             </button>
           ))}
@@ -162,19 +162,19 @@ const featuredArtworks = [
           <a
             id="cartel-link"
             href="/contact?oeuvre=The%20Wall"
-            class="group inline-flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] px-4 py-2 rounded-full bg-black/60 hover:bg-[#E5D5BA] border border-white/30 hover:border-[#E5D5BA] text-white hover:text-black font-semibold transition-all duration-300 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+            class="group inline-flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] px-4.5 py-2 rounded-full bg-[#141413] hover:bg-[#8C7A5E] border border-[#141413] hover:border-[#8C7A5E] text-[#F9F8F5] font-semibold transition-all duration-300 shadow-[0_2px_10px_rgba(20,20,19,0.15)]"
           >
             <span>Demande d'acquisition</span>
             <ArrowUpRight class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
 
           <!-- Subtle Prev / Next Arrows -->
-          <div class="flex items-center gap-0.5 bg-black/60 border border-white/20 rounded-full p-1 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
+          <div class="flex items-center gap-0.5 bg-[#F9F8F5]/90 border border-[#141413]/15 rounded-full p-1 backdrop-blur-md shadow-sm">
             <button
               id="btn-prev-art"
               type="button"
               aria-label="Œuvre précédente"
-              class="p-1.5 text-white/80 hover:text-white hover:bg-white/15 rounded-full transition-colors cursor-pointer"
+              class="p-1.5 text-[#141413]/70 hover:text-[#141413] hover:bg-[#141413]/5 rounded-full transition-colors cursor-pointer"
             >
               <ChevronLeft class="w-4 h-4" />
             </button>
@@ -182,7 +182,7 @@ const featuredArtworks = [
               id="btn-next-art"
               type="button"
               aria-label="Œuvre suivante"
-              class="p-1.5 text-white/80 hover:text-white hover:bg-white/15 rounded-full transition-colors cursor-pointer"
+              class="p-1.5 text-[#141413]/70 hover:text-[#141413] hover:bg-[#141413]/5 rounded-full transition-colors cursor-pointer"
             >
               <ChevronRight class="w-4 h-4" />
             </button>
@@ -312,12 +312,21 @@ const featuredArtworks = [
 
     // 2. Update reel active pill styling
     reelBtns.forEach((btn, i) => {
+      const figSpan = btn.querySelector('span:first-child');
       if (i === activeIndex) {
-        btn.classList.add('bg-black/85', 'text-[#E5D5BA]', 'font-bold', 'border-[#E5D5BA]/60', 'shadow-[0_0_15px_rgba(229,213,186,0.25)]');
-        btn.classList.remove('bg-black/55', 'text-white/80', 'border-white/20');
+        btn.classList.add('bg-[#141413]', 'text-[#F9F8F5]', 'font-bold', 'border-[#141413]', 'shadow-[0_2px_12px_rgba(20,20,19,0.2)]');
+        btn.classList.remove('bg-[#F9F8F5]/85', 'text-[#141413]/70', 'border-[#141413]/15');
+        if (figSpan) {
+          figSpan.classList.add('text-[#C4B59D]');
+          figSpan.classList.remove('text-[#8C7A5E]');
+        }
       } else {
-        btn.classList.remove('bg-black/85', 'text-[#E5D5BA]', 'font-bold', 'border-[#E5D5BA]/60', 'shadow-[0_0_15px_rgba(229,213,186,0.25)]');
-        btn.classList.add('bg-black/55', 'text-white/80', 'border-white/20');
+        btn.classList.remove('bg-[#141413]', 'text-[#F9F8F5]', 'font-bold', 'border-[#141413]', 'shadow-[0_2px_12px_rgba(20,20,19,0.2)]');
+        btn.classList.add('bg-[#F9F8F5]/85', 'text-[#141413]/70', 'border-[#141413]/15');
+        if (figSpan) {
+          figSpan.classList.remove('text-[#C4B59D]');
+          figSpan.classList.add('text-[#8C7A5E]');
+        }
       }
     });
 

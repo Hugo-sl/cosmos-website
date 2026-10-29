@@ -16,7 +16,7 @@ const isCurrent = (path: string): boolean => {
 const isGalerieActive = currentPath.startsWith('/galerie');
 const isAccueilV2 = currentPath === '/accueil-v2';
 const isAccueilV3 = currentPath === '/accueil-v3';
-const isDarkHeader = isAccueilV2;
+const isDarkHeader = false; // V2 uses the museum paper theme (#F9F8F5)
 
 const getAccueilLabel = (): string => {
   if (isAccueilV2) return 'V2';
@@ -36,8 +36,8 @@ const getGalerieLabel = (): string => {
   id="main-header"
   data-page-v2={isAccueilV2 ? "true" : undefined}
   class={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-    isDarkHeader
-      ? 'bg-transparent backdrop-blur-none border-b border-transparent text-[#F9F8F5]'
+    isAccueilV2
+      ? 'bg-[#F9F8F5]/80 backdrop-blur-md border-b border-[#141413]/10 text-[#141413]'
       : 'bg-[#F9F8F5]/90 backdrop-blur-md border-b border-hairline text-[#141413]'
   }`}
 >

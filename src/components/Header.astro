@@ -67,7 +67,14 @@ const getGalerieLabel = (): string => {
     </a>
 
     <!-- Desktop Navigation -->
-    <nav aria-label="Navigation principale" class="hidden md:flex items-center gap-8">
+    <nav
+      aria-label="Navigation principale"
+      class={`hidden md:flex items-center gap-7 ${
+        isAccueilV2
+          ? 'bg-[#F9F8F5]/85 backdrop-blur-md border border-[#141413]/15 rounded-full px-7 py-2 shadow-sm'
+          : 'gap-8'
+      }`}
+    >
       
       <!-- Accueil Dropdown (V1 vs V2 vs V3) -->
       <div class="relative group py-1">

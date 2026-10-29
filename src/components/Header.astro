@@ -37,7 +37,7 @@ const getGalerieLabel = (): string => {
   data-page-v2={isAccueilV2 ? "true" : undefined}
   class={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
     isAccueilV2
-      ? 'bg-[#F9F8F5]/80 backdrop-blur-md border-b border-[#141413]/10 text-[#141413]'
+      ? 'bg-transparent backdrop-blur-none border-b border-transparent text-[#141413]'
       : 'bg-[#F9F8F5]/90 backdrop-blur-md border-b border-hairline text-[#141413]'
   }`}
 >
@@ -50,8 +50,8 @@ const getGalerieLabel = (): string => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 742 310"
         preserveAspectRatio="xMidYMid meet"
-        class={`header-logo h-8 sm:h-9 w-auto transition-all group-hover:opacity-75 ${
-          isDarkHeader ? 'fill-[#F9F8F5] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]' : 'fill-[#141413]'
+        class={`header-logo h-8 sm:h-9 w-auto transition-all group-hover:opacity-75 fill-[#141413] ${
+          isAccueilV2 ? 'drop-shadow-[0_1px_6px_rgba(249,248,245,0.9)]' : ''
         }`}
       >
         <g transform="translate(0.000000,310.000000) scale(0.100000,-0.100000)">
@@ -74,36 +74,24 @@ const getGalerieLabel = (): string => {
         <a
           href="/"
           class={`text-xs uppercase tracking-[0.2em] font-sans transition-all flex items-center gap-1.5 ${
-            isDarkHeader
-              ? 'text-[#F9F8F5] [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)] font-semibold'
+            isAccueilV2
+              ? 'text-[#141413] [text-shadow:_0_1px_8px_rgba(249,248,245,0.9)] font-semibold'
               : isCurrent('/') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
           }`}
         >
           <span>Accueil ({getAccueilLabel()})</span>
-          <ChevronDown class={`w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300 ${
-            isDarkHeader ? 'text-[#E5D5BA]' : 'text-[#8C7A5E]'
-          }`} aria-hidden="true" />
+          <ChevronDown class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300 text-[#8C7A5E]" aria-hidden="true" />
         </a>
 
         <!-- Dropdown Menu -->
-        <div class={`absolute top-full left-0 hidden group-hover:flex flex-col border p-2 shadow-2xl min-w-[140px] space-y-0.5 ${
-          isDarkHeader
-            ? 'bg-[#141413]/95 backdrop-blur-xl border-white/20 text-[#F9F8F5]'
-            : 'bg-[#F9F8F5] border-hairline text-[#141413]'
-        }`}>
-          <a href="/" class={`text-xs font-mono py-1.5 px-3 transition-colors block ${
-            isDarkHeader ? 'hover:bg-white/10 text-[#9C9991]' : 'hover:bg-[#F2F0EB] text-[#666460]'
-          } ${currentPath === '/' ? 'font-bold text-[#F9F8F5]' : ''}`}>
+        <div class="absolute top-full left-0 hidden group-hover:flex flex-col border p-2 shadow-2xl min-w-[140px] space-y-0.5 bg-[#F9F8F5] border-hairline text-[#141413]">
+          <a href="/" class={`text-xs font-mono py-1.5 px-3 transition-colors block hover:bg-[#F2F0EB] text-[#666460] ${currentPath === '/' ? 'font-bold text-[#141413]' : ''}`}>
             V1
           </a>
-          <a href="/accueil-v2" class={`text-xs font-mono py-1.5 px-3 transition-colors block ${
-            isDarkHeader ? 'hover:bg-white/10 text-[#9C9991]' : 'hover:bg-[#F2F0EB] text-[#666460]'
-          } ${currentPath === '/accueil-v2' ? 'font-bold text-[#F9F8F5]' : ''}`}>
+          <a href="/accueil-v2" class={`text-xs font-mono py-1.5 px-3 transition-colors block hover:bg-[#F2F0EB] text-[#666460] ${currentPath === '/accueil-v2' ? 'font-bold text-[#141413]' : ''}`}>
             V2
           </a>
-          <a href="/accueil-v3" class={`text-xs font-mono py-1.5 px-3 transition-colors block ${
-            isDarkHeader ? 'hover:bg-white/10 text-[#9C9991]' : 'hover:bg-[#F2F0EB] text-[#666460]'
-          } ${currentPath === '/accueil-v3' ? 'font-bold text-[#F9F8F5]' : ''}`}>
+          <a href="/accueil-v3" class={`text-xs font-mono py-1.5 px-3 transition-colors block hover:bg-[#F2F0EB] text-[#666460] ${currentPath === '/accueil-v3' ? 'font-bold text-[#141413]' : ''}`}>
             V3
           </a>
         </div>
@@ -114,41 +102,27 @@ const getGalerieLabel = (): string => {
         <a
           href="/galerie"
           class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all flex items-center gap-1.5 ${
-            isDarkHeader
-              ? 'text-[#F9F8F5] [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)] hover:text-[#E5D5BA]'
+            isAccueilV2
+              ? 'text-[#141413] [text-shadow:_0_1px_8px_rgba(249,248,245,0.9)] hover:text-[#8C7A5E]'
               : isGalerieActive ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
           }`}
         >
           <span>Galeries ({getGalerieLabel()})</span>
-          <ChevronDown class={`w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300 ${
-            isDarkHeader ? 'text-[#E5D5BA]' : 'text-[#8C7A5E]'
-          }`} aria-hidden="true" />
+          <ChevronDown class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300 text-[#8C7A5E]" aria-hidden="true" />
         </a>
 
         <!-- Dropdown Menu -->
-        <div class={`absolute top-full left-0 hidden group-hover:flex flex-col border p-2 shadow-2xl min-w-[140px] space-y-0.5 ${
-          isDarkHeader
-            ? 'bg-[#141413]/95 backdrop-blur-xl border-white/20 text-[#F9F8F5]'
-            : 'bg-[#F9F8F5] border-hairline text-[#141413]'
-        }`}>
-          <a href="/galerie" class={`text-xs font-mono py-1.5 px-3 transition-colors block ${
-            isDarkHeader ? 'hover:bg-white/10 text-[#9C9991]' : 'hover:bg-[#F2F0EB] text-[#666460]'
-          } ${currentPath === '/galerie' ? 'font-bold text-[#F9F8F5]' : ''}`}>
+        <div class="absolute top-full left-0 hidden group-hover:flex flex-col border p-2 shadow-2xl min-w-[140px] space-y-0.5 bg-[#F9F8F5] border-hairline text-[#141413]">
+          <a href="/galerie" class={`text-xs font-mono py-1.5 px-3 transition-colors block hover:bg-[#F2F0EB] text-[#666460] ${currentPath === '/galerie' ? 'font-bold text-[#141413]' : ''}`}>
             V1
           </a>
-          <a href="/galerie-v2" class={`text-xs font-mono py-1.5 px-3 transition-colors block ${
-            isDarkHeader ? 'hover:bg-white/10 text-[#9C9991]' : 'hover:bg-[#F2F0EB] text-[#666460]'
-          } ${currentPath === '/galerie-v2' ? 'font-bold text-[#F9F8F5]' : ''}`}>
+          <a href="/galerie-v2" class={`text-xs font-mono py-1.5 px-3 transition-colors block hover:bg-[#F2F0EB] text-[#666460] ${currentPath === '/galerie-v2' ? 'font-bold text-[#141413]' : ''}`}>
             V2
           </a>
-          <a href="/galerie-v3" class={`text-xs font-mono py-1.5 px-3 transition-colors block ${
-            isDarkHeader ? 'hover:bg-white/10 text-[#9C9991]' : 'hover:bg-[#F2F0EB] text-[#666460]'
-          } ${currentPath === '/galerie-v3' ? 'font-bold text-[#F9F8F5]' : ''}`}>
+          <a href="/galerie-v3" class={`text-xs font-mono py-1.5 px-3 transition-colors block hover:bg-[#F2F0EB] text-[#666460] ${currentPath === '/galerie-v3' ? 'font-bold text-[#141413]' : ''}`}>
             V3
           </a>
-          <a href="/galerie-v4" class={`text-xs font-mono py-1.5 px-3 transition-colors block ${
-            isDarkHeader ? 'hover:bg-white/10 text-[#9C9991]' : 'hover:bg-[#F2F0EB] text-[#666460]'
-          } ${currentPath === '/galerie-v4' ? 'font-bold text-[#F9F8F5]' : ''}`}>
+          <a href="/galerie-v4" class={`text-xs font-mono py-1.5 px-3 transition-colors block hover:bg-[#F2F0EB] text-[#666460] ${currentPath === '/galerie-v4' ? 'font-bold text-[#141413]' : ''}`}>
             V4
           </a>
         </div>
@@ -157,8 +131,8 @@ const getGalerieLabel = (): string => {
       <a
         href="/a-propos"
         class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all relative py-1 ${
-          isDarkHeader
-            ? 'text-[#F9F8F5] [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)] hover:text-[#E5D5BA]'
+          isAccueilV2
+            ? 'text-[#141413] [text-shadow:_0_1px_8px_rgba(249,248,245,0.9)] hover:text-[#8C7A5E]'
             : isCurrent('/a-propos') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
         }`}
       >
@@ -168,8 +142,8 @@ const getGalerieLabel = (): string => {
       <a
         href="/contact"
         class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all relative py-1 ${
-          isDarkHeader
-            ? 'text-[#F9F8F5] [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)] hover:text-[#E5D5BA]'
+          isAccueilV2
+            ? 'text-[#141413] [text-shadow:_0_1px_8px_rgba(249,248,245,0.9)] hover:text-[#8C7A5E]'
             : isCurrent('/contact') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
         }`}
       >
@@ -181,8 +155,8 @@ const getGalerieLabel = (): string => {
     <a
       href="/contact"
       class={`header-cta hidden md:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] px-4 py-2 border transition-all duration-300 ${
-        isDarkHeader
-          ? 'border-white/40 bg-black/60 backdrop-blur-md text-[#F9F8F5] hover:bg-[#E5D5BA] hover:border-[#E5D5BA] hover:text-black font-semibold shadow-[0_2px_10px_rgba(0,0,0,0.5)]'
+        isAccueilV2
+          ? 'border-[#141413]/25 bg-[#F9F8F5]/80 backdrop-blur-md text-[#141413] hover:bg-[#141413] hover:text-[#F9F8F5] rounded-full shadow-sm'
           : 'border-[#141413]/30 text-[#141413] hover:bg-[#141413] hover:text-[#F9F8F5]'
       }`}
     >

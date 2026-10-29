@@ -67,14 +67,7 @@ const getGalerieLabel = (): string => {
     </a>
 
     <!-- Desktop Navigation -->
-    <nav
-      aria-label="Navigation principale"
-      class={`hidden md:flex items-center gap-7 ${
-        isAccueilV2
-          ? 'bg-[#F9F8F5]/85 backdrop-blur-md border border-[#141413]/15 rounded-full px-7 py-2 shadow-sm'
-          : 'gap-8'
-      }`}
-    >
+    <nav aria-label="Navigation principale" class="hidden md:flex items-center gap-8">
       
       <!-- Accueil Dropdown (V1 vs V2 vs V3) -->
       <div class="relative group py-1">
@@ -82,7 +75,7 @@ const getGalerieLabel = (): string => {
           href="/"
           class={`text-xs uppercase tracking-[0.2em] font-sans transition-all flex items-center gap-1.5 ${
             isAccueilV2
-              ? 'text-[#141413] [text-shadow:_0_1px_8px_rgba(249,248,245,0.9)] font-semibold'
+              ? 'text-[#141413] [text-shadow:_0_0_8px_#F9F8F5,_0_0_16px_#F9F8F5,_0_0_24px_rgba(249,248,245,0.95)] font-semibold'
               : isCurrent('/') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
           }`}
         >
@@ -110,7 +103,7 @@ const getGalerieLabel = (): string => {
           href="/galerie"
           class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all flex items-center gap-1.5 ${
             isAccueilV2
-              ? 'text-[#141413] [text-shadow:_0_1px_8px_rgba(249,248,245,0.9)] hover:text-[#8C7A5E]'
+              ? 'text-[#141413] [text-shadow:_0_0_8px_#F9F8F5,_0_0_16px_#F9F8F5,_0_0_24px_rgba(249,248,245,0.95)] hover:text-[#8C7A5E]'
               : isGalerieActive ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
           }`}
         >
@@ -139,7 +132,7 @@ const getGalerieLabel = (): string => {
         href="/a-propos"
         class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all relative py-1 ${
           isAccueilV2
-            ? 'text-[#141413] [text-shadow:_0_1px_8px_rgba(249,248,245,0.9)] hover:text-[#8C7A5E]'
+            ? 'text-[#141413] [text-shadow:_0_0_8px_#F9F8F5,_0_0_16px_#F9F8F5,_0_0_24px_rgba(249,248,245,0.95)] hover:text-[#8C7A5E]'
             : isCurrent('/a-propos') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
         }`}
       >
@@ -150,7 +143,7 @@ const getGalerieLabel = (): string => {
         href="/contact"
         class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all relative py-1 ${
           isAccueilV2
-            ? 'text-[#141413] [text-shadow:_0_1px_8px_rgba(249,248,245,0.9)] hover:text-[#8C7A5E]'
+            ? 'text-[#141413] [text-shadow:_0_0_8px_#F9F8F5,_0_0_16px_#F9F8F5,_0_0_24px_rgba(249,248,245,0.95)] hover:text-[#8C7A5E]'
             : isCurrent('/contact') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
         }`}
       >
@@ -161,10 +154,8 @@ const getGalerieLabel = (): string => {
     <!-- Professional Inquiries Action -->
     <a
       href="/contact"
-      class={`header-cta hidden md:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] px-4 py-2 border transition-all duration-300 ${
-        isAccueilV2
-          ? 'border-[#141413]/25 bg-[#F9F8F5]/80 backdrop-blur-md text-[#141413] hover:bg-[#141413] hover:text-[#F9F8F5] rounded-full shadow-sm'
-          : 'border-[#141413]/30 text-[#141413] hover:bg-[#141413] hover:text-[#F9F8F5]'
+      class={`header-cta hidden md:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] px-4 py-2 border transition-all duration-300 border-[#141413]/30 text-[#141413] hover:bg-[#141413] hover:text-[#F9F8F5] ${
+        isAccueilV2 ? '[text-shadow:_0_0_8px_#F9F8F5]' : ''
       }`}
     >
       <span>Contact Atelier</span>

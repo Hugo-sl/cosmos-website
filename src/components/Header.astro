@@ -51,7 +51,7 @@ const getGalerieLabel = (): string => {
         viewBox="0 0 742 310"
         preserveAspectRatio="xMidYMid meet"
         class={`header-logo h-8 sm:h-9 w-auto transition-all group-hover:opacity-75 ${
-          isDarkHeader ? 'fill-[#F9F8F5]' : 'fill-[#141413]'
+          isDarkHeader ? 'fill-[#F9F8F5] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]' : 'fill-[#141413]'
         }`}
       >
         <g transform="translate(0.000000,310.000000) scale(0.100000,-0.100000)">
@@ -73,15 +73,15 @@ const getGalerieLabel = (): string => {
       <div class="relative group py-1">
         <a
           href="/"
-          class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all flex items-center gap-1.5 ${
+          class={`text-xs uppercase tracking-[0.2em] font-sans transition-all flex items-center gap-1.5 ${
             isDarkHeader
-              ? 'text-[#F9F8F5] font-semibold'
+              ? 'text-[#F9F8F5] [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)] font-semibold'
               : isCurrent('/') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
           }`}
         >
           <span>Accueil ({getAccueilLabel()})</span>
           <ChevronDown class={`w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300 ${
-            isDarkHeader ? 'text-[#C4B59D]' : 'text-[#8C7A5E]'
+            isDarkHeader ? 'text-[#E5D5BA]' : 'text-[#8C7A5E]'
           }`} aria-hidden="true" />
         </a>
 
@@ -115,13 +115,13 @@ const getGalerieLabel = (): string => {
           href="/galerie"
           class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all flex items-center gap-1.5 ${
             isDarkHeader
-              ? 'text-[#F9F8F5]/80 hover:text-[#F9F8F5]'
+              ? 'text-[#F9F8F5] [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)] hover:text-[#E5D5BA]'
               : isGalerieActive ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
           }`}
         >
           <span>Galeries ({getGalerieLabel()})</span>
           <ChevronDown class={`w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300 ${
-            isDarkHeader ? 'text-[#C4B59D]' : 'text-[#8C7A5E]'
+            isDarkHeader ? 'text-[#E5D5BA]' : 'text-[#8C7A5E]'
           }`} aria-hidden="true" />
         </a>
 
@@ -158,7 +158,7 @@ const getGalerieLabel = (): string => {
         href="/a-propos"
         class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all relative py-1 ${
           isDarkHeader
-            ? 'text-[#F9F8F5]/80 hover:text-[#F9F8F5]'
+            ? 'text-[#F9F8F5] [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)] hover:text-[#E5D5BA]'
             : isCurrent('/a-propos') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
         }`}
       >
@@ -169,7 +169,7 @@ const getGalerieLabel = (): string => {
         href="/contact"
         class={`text-xs uppercase tracking-[0.2em] font-sans font-medium transition-all relative py-1 ${
           isDarkHeader
-            ? 'text-[#F9F8F5]/80 hover:text-[#F9F8F5]'
+            ? 'text-[#F9F8F5] [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)] hover:text-[#E5D5BA]'
             : isCurrent('/contact') ? 'text-[#141413] font-semibold' : 'text-[#666460] hover:text-[#141413]'
         }`}
       >
@@ -182,7 +182,7 @@ const getGalerieLabel = (): string => {
       href="/contact"
       class={`header-cta hidden md:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] px-4 py-2 border transition-all duration-300 ${
         isDarkHeader
-          ? 'border-white/30 text-[#F9F8F5] hover:bg-[#F9F8F5] hover:text-[#141413]'
+          ? 'border-white/40 bg-black/60 backdrop-blur-md text-[#F9F8F5] hover:bg-[#E5D5BA] hover:border-[#E5D5BA] hover:text-black font-semibold shadow-[0_2px_10px_rgba(0,0,0,0.5)]'
           : 'border-[#141413]/30 text-[#141413] hover:bg-[#141413] hover:text-[#F9F8F5]'
       }`}
     >
@@ -259,14 +259,19 @@ const getGalerieLabel = (): string => {
   }
   header.header-scrolled .header-logo {
     fill: #141413 !important;
+    filter: none !important;
   }
   header.header-scrolled nav a {
     color: #666460 !important;
+    text-shadow: none !important;
   }
   header.header-scrolled nav a:hover {
     color: #141413 !important;
   }
   header.header-scrolled .header-cta {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
     border-color: rgba(20, 20, 19, 0.25) !important;
     color: #141413 !important;
   }

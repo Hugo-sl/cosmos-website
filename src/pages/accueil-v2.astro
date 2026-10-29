@@ -99,17 +99,22 @@ const featuredArtworks = [
     <!-- 2. Subtle Museum Lighting Glow -->
     <div id="hero-spotlight" class="absolute inset-0 z-10 pointer-events-none opacity-0 transition-opacity duration-700" />
 
-    <!-- 3. Minimal Ambient Vignette (Top fade behind transparent navbar & bottom fade for reel) -->
-    <div class="absolute inset-x-0 top-0 h-32 z-15 bg-gradient-to-b from-[#0a0a09]/60 via-[#0a0a09]/15 to-transparent pointer-events-none" />
-    <div class="absolute inset-x-0 bottom-0 h-44 z-15 bg-gradient-to-t from-[#0a0a09]/85 via-[#0a0a09]/40 to-transparent pointer-events-none" />
+    <!-- 3. Calibrated Luxury Scrims (Velvety dark depth behind header, H1 & bottom curatorial baseline) -->
+    <!-- Top-down atmospheric scrim for header & H1 -->
+    <div class="absolute inset-x-0 top-0 h-64 sm:h-72 z-15 bg-gradient-to-b from-black/95 via-black/70 via-35% via-black/30 via-70% to-transparent pointer-events-none" />
+    <!-- Localized radial shadow under top-left H1 for flawless contrast over white graffiti strokes -->
+    <div class="absolute top-0 left-0 w-[550px] h-[380px] z-16 bg-[radial-gradient(ellipse_at_top_left,rgba(0,0,0,0.85)_0%,rgba(0,0,0,0.55)_45%,transparent_80%)] pointer-events-none" />
 
-    <!-- 4. Top-Left Artist Signature H1 (Haute-Couture Monograph Stamp) -->
-    <div class="absolute top-24 sm:top-28 left-6 sm:left-12 lg:left-16 z-25 pointer-events-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+    <!-- Bottom-up atmospheric scrim for curatorial reel & specs -->
+    <div class="absolute inset-x-0 bottom-0 h-72 sm:h-80 z-15 bg-gradient-to-t from-black/95 via-black/80 via-40% via-black/35 via-75% to-transparent pointer-events-none" />
+
+    <!-- 4. Top-Left Artist Signature H1 (Haute-Couture Monograph Stamp with High Contrast) -->
+    <div class="absolute top-24 sm:top-28 left-6 sm:left-12 lg:left-16 z-25 pointer-events-auto">
       <div class="space-y-0.5">
-        <h1 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-none">
+        <h1 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-none [text-shadow:_0_2px_16px_rgba(0,0,0,0.95),_0_1px_4px_rgba(0,0,0,0.9)]">
           COSMOS
         </h1>
-        <p class="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.28em] text-[#C4B59D]">
+        <p class="text-[9px] sm:text-[10.5px] font-mono uppercase tracking-[0.28em] text-[#E5D5BA] font-semibold [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)]">
           Action Painting · Art Urbain Contemporain
         </p>
       </div>
@@ -118,70 +123,70 @@ const featuredArtworks = [
     <!-- 5. Bottom Horizontal Curatorial Baseline (Continuous Haute-Couture Reel) -->
     <div id="hero-bottom-bar" class="relative z-30 h-full max-w-[1600px] mx-auto px-6 sm:px-12 pb-7 sm:pb-9 flex flex-col justify-end pointer-events-none">
       
-      <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 w-full pt-4 border-t border-white/15">
+      <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 w-full pt-4 border-t border-white/20">
 
         <!-- Left: Current Artwork Meta & Title -->
-        <div class="pointer-events-auto space-y-0.5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] shrink-0">
-          <div class="flex items-center gap-2.5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#C4B59D]">
+        <div class="pointer-events-auto space-y-1 shrink-0">
+          <div class="flex items-center gap-2.5 text-[11px] font-mono uppercase tracking-[0.22em] text-[#E5D5BA] font-semibold [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
             <span id="cartel-meta">FIG. 01 / 05</span>
-            <span class="text-white/30">·</span>
-            <span id="cartel-status" class="text-white/80">Disponible</span>
+            <span class="text-white/40">·</span>
+            <span id="cartel-status" class="px-2.5 py-0.5 rounded-full bg-black/60 border border-white/25 text-white/90 text-[10px] tracking-widest backdrop-blur-md">Disponible</span>
           </div>
-          <h2 id="cartel-title" class="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none">
+          <h2 id="cartel-title" class="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none [text-shadow:_0_2px_16px_rgba(0,0,0,0.95),_0_1px_4px_rgba(0,0,0,0.9)]">
             The Wall
           </h2>
-          <p id="cartel-specs" class="text-[11px] sm:text-xs font-mono text-white/70 pt-0.5">
+          <p id="cartel-specs" class="text-xs sm:text-[13px] font-mono text-white/90 pt-0.5 [text-shadow:_0_1px_8px_rgba(0,0,0,0.95)]">
             2024 · 120 × 100 cm · Technique mixte sur lin
           </p>
         </div>
 
         <!-- Center: Interactive Haute-Couture Artwork Selector Reel -->
-        <div class="pointer-events-auto flex items-center gap-1 sm:gap-2 overflow-x-auto max-w-full pb-1 scrollbar-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+        <div class="pointer-events-auto flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto max-w-full pb-1 scrollbar-none">
           {featuredArtworks.map((art, idx) => (
             <button
               type="button"
-              class={`curatorial-reel-btn group px-3 py-1.5 text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer rounded-full shrink-0 flex items-center gap-2 ${
+              class={`curatorial-reel-btn group px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer rounded-full shrink-0 flex items-center gap-2 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.5)] ${
                 idx === 0
-                  ? 'text-[#C4B59D] font-bold bg-white/10 border border-[#C4B59D]/40'
-                  : 'text-white/50 hover:text-white hover:bg-white/5 border border-transparent'
+                  ? 'bg-black/85 text-[#E5D5BA] font-bold border border-[#E5D5BA]/60 shadow-[0_0_15px_rgba(229,213,186,0.25)]'
+                  : 'bg-black/55 text-white/80 hover:text-white hover:bg-black/75 border border-white/20 hover:border-white/40'
               }`}
               data-reel-index={idx}
               aria-label={`Afficher ${art.title}`}
             >
-              <span class="text-[9px] text-[#C4B59D]/70">{art.fig}</span>
+              <span class="text-[9px] text-[#E5D5BA] font-bold">{art.fig}</span>
               <span>{art.title}</span>
             </button>
           ))}
         </div>
 
         <!-- Right: Inquire Action & Arrows -->
-        <div class="pointer-events-auto flex items-center gap-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] shrink-0">
+        <div class="pointer-events-auto flex items-center gap-4 shrink-0">
           <a
             id="cartel-link"
             href="/contact?oeuvre=The%20Wall"
-            class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-[#F9F8F5] hover:text-[#C4B59D] border-b border-white/40 hover:border-[#C4B59D] pb-1 transition-all font-semibold"
+            class="group inline-flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] px-4 py-2 rounded-full bg-black/60 hover:bg-[#E5D5BA] border border-white/30 hover:border-[#E5D5BA] text-white hover:text-black font-semibold transition-all duration-300 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
           >
             <span>Demande d'acquisition</span>
-            <ArrowUpRight class="w-3.5 h-3.5" />
+            <ArrowUpRight class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
 
           <!-- Subtle Prev / Next Arrows -->
-          <div class="flex items-center gap-1 border-l border-white/20 pl-4">
+          <div class="flex items-center gap-0.5 bg-black/60 border border-white/20 rounded-full p-1 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
             <button
               id="btn-prev-art"
               type="button"
               aria-label="Œuvre précédente"
-              class="p-1.5 text-white/60 hover:text-white transition-colors cursor-pointer"
+              class="p-1.5 text-white/80 hover:text-white hover:bg-white/15 rounded-full transition-colors cursor-pointer"
             >
-              <ChevronLeft class="w-5 h-5" />
+              <ChevronLeft class="w-4 h-4" />
             </button>
             <button
               id="btn-next-art"
               type="button"
               aria-label="Œuvre suivante"
-              class="p-1.5 text-white/60 hover:text-white transition-colors cursor-pointer"
+              class="p-1.5 text-white/80 hover:text-white hover:bg-white/15 rounded-full transition-colors cursor-pointer"
             >
-              <ChevronRight class="w-5 h-5" />
+              <ChevronRight class="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -310,11 +315,11 @@ const featuredArtworks = [
     // 2. Update reel active pill styling
     reelBtns.forEach((btn, i) => {
       if (i === activeIndex) {
-        btn.classList.add('text-[#C4B59D]', 'font-bold', 'bg-white/10', 'border-[#C4B59D]/40');
-        btn.classList.remove('text-white/50', 'border-transparent');
+        btn.classList.add('bg-black/85', 'text-[#E5D5BA]', 'font-bold', 'border-[#E5D5BA]/60', 'shadow-[0_0_15px_rgba(229,213,186,0.25)]');
+        btn.classList.remove('bg-black/55', 'text-white/80', 'border-white/20');
       } else {
-        btn.classList.remove('text-[#C4B59D]', 'font-bold', 'bg-white/10', 'border-[#C4B59D]/40');
-        btn.classList.add('text-white/50', 'border-transparent');
+        btn.classList.remove('bg-black/85', 'text-[#E5D5BA]', 'font-bold', 'border-[#E5D5BA]/60', 'shadow-[0_0_15px_rgba(229,213,186,0.25)]');
+        btn.classList.add('bg-black/55', 'text-white/80', 'border-white/20');
       }
     });
 
